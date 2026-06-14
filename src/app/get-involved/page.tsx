@@ -15,36 +15,12 @@ const membershipBenefits = [
 ];
 
 const volunteerOpportunities = [
-  {
-    title: "Event Planning Committee",
-    description: "Help plan and execute CSWN events, from speaker series to social gatherings.",
-    commitment: "3-5 hours/month",
-  },
-  {
-    title: "Marketing & Social Media",
-    description: "Create content, manage social accounts, and grow CSWN's digital presence.",
-    commitment: "2-4 hours/week",
-  },
-  {
-    title: "Outreach & Partnerships",
-    description: "Build relationships with sponsors, university departments, and community organizations.",
-    commitment: "3-5 hours/month",
-  },
-  {
-    title: "Technical Projects",
-    description: "Contribute to CSWN's website, tools, and technical infrastructure.",
-    commitment: "Flexible",
-  },
-  {
-    title: "Mentorship Program",
-    description: "Guide newer members through their first year in CS and at Purdue.",
-    commitment: "2-3 hours/month",
-  },
-  {
-    title: "Workshop Facilitation",
-    description: "Lead or co-lead technical or professional development workshops.",
-    commitment: "As scheduled",
-  },
+  { title: "Event Planning Committee", description: "Help plan and execute CSWN events, from speaker series to social gatherings.", commitment: "3–5 hrs/month" },
+  { title: "Marketing & Social Media", description: "Create content, manage social accounts, and grow CSWN's digital presence.", commitment: "2–4 hrs/week" },
+  { title: "Outreach & Partnerships", description: "Build relationships with sponsors, university departments, and community organizations.", commitment: "3–5 hrs/month" },
+  { title: "Technical Projects", description: "Contribute to CSWN's website, tools, and technical infrastructure.", commitment: "Flexible" },
+  { title: "Mentorship Program", description: "Guide newer members through their first year in CS and at Purdue.", commitment: "2–3 hrs/month" },
+  { title: "Workshop Facilitation", description: "Lead or co-lead technical or professional development workshops.", commitment: "As scheduled" },
 ];
 
 export default function GetInvolvedPage() {
@@ -57,19 +33,15 @@ export default function GetInvolvedPage() {
       />
 
       {/* Membership Benefits */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-4">Membership Benefits</h2>
-            <p className="text-text-light max-w-2xl mx-auto">
-              CSWN membership is free and open to all Purdue Indianapolis students who support 
-              women in computing.
-            </p>
+      <section className="py-20 bg-bg">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10">
+            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Free membership</p>
+            <h2 className="text-2xl font-bold text-text">What you get</h2>
           </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {membershipBenefits.map((benefit) => (
-              <div key={benefit.title} className="p-5 bg-bg-alt rounded-xl">
+              <div key={benefit.title} className="p-5 bg-bg-card border border-border rounded-xl">
                 <span className="text-2xl mb-2 block">{benefit.icon}</span>
                 <h3 className="font-semibold text-text text-sm mb-1">{benefit.title}</h3>
                 <p className="text-xs text-text-light">{benefit.description}</p>
@@ -79,93 +51,59 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      {/* Join Form */}
-      <section className="py-20 bg-bg-alt">
+      {/* Join */}
+      <section className="py-20 bg-bg-alt border-y border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-4">Join CSWN</h2>
-            <p className="text-text-light max-w-xl mx-auto">
-              Ready to join? Sign up through BoilerLink or reach out to us directly.
-            </p>
+          <div className="mb-10">
+            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Sign Up</p>
+            <h2 className="text-2xl font-bold text-text">Join CSWN</h2>
+            <p className="text-text-light text-sm mt-2">Ready to join? Sign up through BoilerLink or reach out to us directly.</p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 p-8">
+          <div className="bg-bg-card border border-border rounded-xl p-8">
             <div className="text-center mb-8">
               <a
                 href="https://boilerlink.purdue.edu/organization/computersciencewomensnetworkindy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/25 text-lg"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm"
               >
                 Join on BoilerLink
               </a>
-              <p className="text-sm text-text-light mt-3">Official Purdue student organization registration</p>
+              <p className="text-xs text-text-lighter mt-3">Official Purdue student organization registration</p>
             </div>
 
             <div className="relative mb-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-200" />
+                <div className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center">
-                <span className="bg-white px-4 text-sm text-text-lighter">or contact us directly</span>
+                <span className="bg-bg-card px-4 text-xs text-text-lighter">or reach out directly</span>
               </div>
             </div>
 
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-text mb-1">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-colors"
-                    placeholder="Your first name"
-                  />
+                  <label htmlFor="firstName" className="block text-xs font-medium text-text-light mb-1">First Name</label>
+                  <input type="text" id="firstName" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors placeholder:text-text-lighter" placeholder="Your first name" />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-text mb-1">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-colors"
-                    placeholder="Your last name"
-                  />
+                  <label htmlFor="lastName" className="block text-xs font-medium text-text-light mb-1">Last Name</label>
+                  <input type="text" id="lastName" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors placeholder:text-text-lighter" placeholder="Your last name" />
                 </div>
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-text mb-1">
-                  Purdue Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-colors"
-                  placeholder="yourname@purdue.edu"
-                />
+                <label htmlFor="email" className="block text-xs font-medium text-text-light mb-1">Purdue Email</label>
+                <input type="email" id="email" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors placeholder:text-text-lighter" placeholder="yourname@purdue.edu" />
               </div>
               <div>
-                <label htmlFor="major" className="block text-sm font-medium text-text mb-1">
-                  Major
-                </label>
-                <input
-                  type="text"
-                  id="major"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-colors"
-                  placeholder="e.g. Computer Science"
-                />
+                <label htmlFor="major" className="block text-xs font-medium text-text-light mb-1">Major</label>
+                <input type="text" id="major" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors placeholder:text-text-lighter" placeholder="e.g. Computer Science" />
               </div>
               <div>
-                <label htmlFor="year" className="block text-sm font-medium text-text mb-1">
-                  Year
-                </label>
-                <select
-                  id="year"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-colors"
-                >
+                <label htmlFor="year" className="block text-xs font-medium text-text-light mb-1">Year</label>
+                <select id="year" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors">
                   <option value="">Select your year</option>
                   <option value="freshman">Freshman</option>
                   <option value="sophomore">Sophomore</option>
@@ -175,20 +113,10 @@ export default function GetInvolvedPage() {
                 </select>
               </div>
               <div>
-                <label htmlFor="interests" className="block text-sm font-medium text-text mb-1">
-                  What interests you about CSWN?
-                </label>
-                <textarea
-                  id="interests"
-                  rows={3}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-colors resize-none"
-                  placeholder="Tell us what you're looking to gain from CSWN..."
-                />
+                <label htmlFor="interests" className="block text-xs font-medium text-text-light mb-1">What interests you about CSWN?</label>
+                <textarea id="interests" rows={3} className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors resize-none placeholder:text-text-lighter" placeholder="Tell us what you're looking to gain from CSWN..." />
               </div>
-              <button
-                type="submit"
-                className="w-full py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors"
-              >
+              <button type="submit" className="w-full py-3 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm">
                 Express Interest
               </button>
             </form>
@@ -196,19 +124,16 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      {/* Volunteer Opportunities */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-4">Volunteer & Committee Opportunities</h2>
-            <p className="text-text-light max-w-2xl mx-auto">
-              Take your involvement to the next level. Join a committee and help shape CSWN&apos;s impact.
-            </p>
+      {/* Committee Roles */}
+      <section className="py-20 bg-bg">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10">
+            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Go deeper</p>
+            <h2 className="text-2xl font-bold text-text">Committee opportunities</h2>
           </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {volunteerOpportunities.map((opp) => (
-              <div key={opp.title} className="bg-bg-alt p-6 rounded-xl">
+              <div key={opp.title} className="bg-bg-card border border-border rounded-xl p-6">
                 <h3 className="font-semibold text-text mb-2">{opp.title}</h3>
                 <p className="text-sm text-text-light mb-3">{opp.description}</p>
                 <p className="text-xs text-primary font-medium">⏱ {opp.commitment}</p>
@@ -218,44 +143,25 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      {/* Other Ways */}
-      <section className="py-20 bg-bg-alt">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-4">Other Ways to Get Involved</h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-xl border border-gray-100">
-              <h3 className="font-semibold text-text mb-2">🎤 Become a Speaker</h3>
-              <p className="text-sm text-text-light">
-                Are you a professional in tech? Share your story with our members through 
-                our Day in the Life Speaker Series.
-              </p>
-              <Link href="/speaker-series" className="text-sm text-primary font-medium mt-3 inline-block hover:text-primary-dark">
-                Learn More →
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-gray-100">
-              <h3 className="font-semibold text-text mb-2">🧭 Become a Mentor</h3>
-              <p className="text-sm text-text-light">
-                Guide students through their tech journey. Alumni and industry professionals 
-                welcome to join our mentorship program.
-              </p>
-              <Link href="/contact" className="text-sm text-primary font-medium mt-3 inline-block hover:text-primary-dark">
-                Express Interest →
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-gray-100">
-              <h3 className="font-semibold text-text mb-2">🏢 Industry Partnerships</h3>
-              <p className="text-sm text-text-light">
-                Companies can partner with CSWN through sponsorship, events, and recruitment 
-                opportunities.
-              </p>
-              <Link href="/sponsors" className="text-sm text-primary font-medium mt-3 inline-block hover:text-primary-dark">
-                Partner With Us →
-              </Link>
-            </div>
+      {/* Other ways */}
+      <section className="py-20 bg-bg-alt border-t border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-text mb-8">Other ways to get involved</h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { emoji: "🎤", title: "Become a Speaker", desc: "Share your story with our members through our Day in the Life Speaker Series.", link: "/speaker-series", linkLabel: "Learn More" },
+              { emoji: "🧭", title: "Become a Mentor", desc: "Guide students through their tech journey. Alumni and industry professionals welcome.", link: "/contact", linkLabel: "Express Interest" },
+              { emoji: "🏢", title: "Industry Partnerships", desc: "Partner with CSWN through sponsorship, events, and recruitment opportunities.", link: "/sponsors", linkLabel: "Partner With Us" },
+            ].map((item) => (
+              <div key={item.title} className="bg-bg-card border border-border rounded-xl p-6">
+                <span className="text-2xl mb-3 block">{item.emoji}</span>
+                <h3 className="font-semibold text-text mb-2">{item.title}</h3>
+                <p className="text-sm text-text-light mb-4">{item.desc}</p>
+                <Link href={item.link} className="text-sm text-primary hover:text-primary-dark transition-colors font-medium">
+                  {item.linkLabel} →
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>

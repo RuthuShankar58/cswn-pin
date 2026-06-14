@@ -6,20 +6,19 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, badge }: PageHeroProps) {
   return (
-    <section className="relative bg-bg-alt pt-24 pb-16 overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+    <section className="relative bg-bg pt-24 pb-16 overflow-hidden border-b border-border">
+      {/* Subtle glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-primary/8 rounded-full blur-[80px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {badge && (
-          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+          <span className="inline-flex items-center px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-medium tracking-wide mb-5">
             {badge}
           </span>
         )}
-        <h1 className="text-4xl md:text-5xl font-bold text-text mb-4">{title}</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold text-text tracking-tight mb-4">{title}</h1>
         {subtitle && (
-          <p className="text-lg text-text-light max-w-2xl mx-auto">{subtitle}</p>
+          <p className="text-lg text-text-light max-w-2xl leading-relaxed">{subtitle}</p>
         )}
       </div>
     </section>

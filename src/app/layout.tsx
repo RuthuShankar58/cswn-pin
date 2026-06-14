@@ -12,20 +12,23 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "CSWN | Computer Science Women's Network - Purdue Indianapolis",
   description:
-    "Empowering women and allies in computing through professional development, technical growth, mentorship, leadership, networking, outreach, and community at Purdue University Indianapolis.",
+    "Empowering women in CS and tech at Purdue University Indianapolis through mentorship, workshops, speaker series, and community since 2024.",
   keywords: [
     "CSWN",
     "Computer Science Women's Network",
     "Purdue Indianapolis",
+    "Purdue University Indianapolis",
+    "CSWN Indy",
     "women in tech",
     "women in computing",
+    "Indianapolis tech",
     "computer science",
     "professional development",
     "mentorship",
   ],
   openGraph: {
     title: "CSWN | Computer Science Women's Network",
-    description: "Empowering Women in Technology Through Community, Leadership, and Opportunity",
+    description: "Where Women in Tech Find Their Network — CSWN at Purdue University Indianapolis",
     type: "website",
     locale: "en_US",
   },

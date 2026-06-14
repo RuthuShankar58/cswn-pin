@@ -5,6 +5,7 @@ export interface Leader {
   major?: string;
   graduationYear?: string;
   linkedin?: string;
+  email?: string;
   bio?: string;
   image?: string;
 }
@@ -12,66 +13,32 @@ export interface Leader {
 export const leadership: Leader[] = [
   {
     id: "president",
-    name: "President",
+    name: "Ruthu Shankar",
     position: "President",
-    major: "Computer Science",
-    bio: "Leading CSWN's mission to empower women in technology through professional development, community building, and industry connections.",
-    image: "/images/leadership/placeholder.jpg",
+    major: "Computer Science, Minor in Math & Management",
+    graduationYear: "2027",
+    bio: "Ruthu loves meeting new people and sparking conversations. She's especially passionate about outreach programs that inspire middle and high school girls to explore Computer Science.",
+    email: "shanka61@purdue.edu",
+    image: "/images/leadership/ruthu.jpg",
   },
   {
     id: "vice-president",
-    name: "Vice President",
+    name: "Ria Nimbkar",
     position: "Vice President",
     major: "Computer Science",
-    bio: "Supporting organizational operations and ensuring CSWN delivers impactful programming for all members.",
-    image: "/images/leadership/placeholder.jpg",
+    graduationYear: "2027",
+    bio: "A creative mind behind CSWN, Ria designs posters and fun projects to keep events engaging. She's dedicated to encouraging students to get involved in tech and campus life through CSWN.",
+    email: "rnimbkar@purdue.edu",
+    image: "/images/leadership/ria.jpg",
   },
   {
     id: "treasurer",
-    name: "Treasurer",
+    name: "Abha Gupta",
     position: "Treasurer",
-    major: "Computer Science",
-    bio: "Managing CSWN's finances, sponsorships, and budget to support our growing programming and events.",
-    image: "/images/leadership/placeholder.jpg",
-  },
-  {
-    id: "secretary",
-    name: "Secretary",
-    position: "Secretary",
-    major: "Computer Science",
-    bio: "Maintaining organizational records, meeting minutes, and ensuring clear communication across all teams.",
-    image: "/images/leadership/placeholder.jpg",
-  },
-  {
-    id: "events-chair",
-    name: "Events Chair",
-    position: "Events Chair",
-    major: "Computer Science",
-    bio: "Planning and executing CSWN's diverse programming from speaker series to social events and competitions.",
-    image: "/images/leadership/placeholder.jpg",
-  },
-  {
-    id: "marketing-chair",
-    name: "Marketing Chair",
-    position: "Marketing Chair",
-    major: "Computer Science",
-    bio: "Driving CSWN's brand presence across social media, campus communications, and promotional materials.",
-    image: "/images/leadership/placeholder.jpg",
-  },
-  {
-    id: "outreach-chair",
-    name: "Outreach Chair",
-    position: "Outreach Chair",
-    major: "Computer Science",
-    bio: "Building partnerships with industry sponsors, university departments, and community organizations.",
-    image: "/images/leadership/placeholder.jpg",
-  },
-  {
-    id: "tech-chair",
-    name: "Technology Chair",
-    position: "Technology Chair",
-    major: "Computer Science",
-    bio: "Managing CSWN's technical infrastructure, website, and digital tools to support our community.",
-    image: "/images/leadership/placeholder.jpg",
+    major: "Computer Science, Minor in Math & Finance",
+    graduationYear: "2027",
+    bio: "Abha enjoys spending time with friends and believes in building strong communities. Through CSWN, she hopes to help bridge the gender gap in technology.",
+    email: "gupt1107@purdue.edu",
+    image: "/images/leadership/abha.jpg",
   },
 ];

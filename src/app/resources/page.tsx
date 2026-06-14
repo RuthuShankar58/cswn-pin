@@ -11,14 +11,14 @@ export default function ResourcesPage() {
       />
 
       {/* Quick Links */}
-      <section className="py-8 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-6 bg-bg border-b border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-2">
             {resourceCategories.map((cat) => (
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="px-4 py-2 bg-gray-100 hover:bg-primary/10 text-text-light hover:text-primary rounded-full text-sm font-medium transition-colors"
+                className="px-3 py-1.5 bg-bg-card border border-border hover:border-primary/50 hover:text-primary text-text-light rounded-lg text-xs font-medium transition-colors"
               >
                 {cat.icon} {cat.title}
               </a>
@@ -28,27 +28,27 @@ export default function ResourcesPage() {
       </section>
 
       {/* Resource Sections */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-bg">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {resourceCategories.map((category) => (
               <div key={category.id} id={category.id}>
-                <div className="mb-8">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-3xl">{category.icon}</span>
-                    <h2 className="text-2xl font-bold text-text">{category.title}</h2>
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="text-2xl">{category.icon}</span>
+                  <div>
+                    <h2 className="text-xl font-bold text-text">{category.title}</h2>
+                    <p className="text-sm text-text-light">{category.description}</p>
                   </div>
-                  <p className="text-text-light">{category.description}</p>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3">
                   {category.resources.map((resource) => (
                     <a
                       key={resource.title}
                       href={resource.url || "#"}
                       target={resource.url?.startsWith("http") ? "_blank" : undefined}
                       rel={resource.url?.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="block p-5 bg-bg-alt rounded-xl hover:bg-primary/5 border border-transparent hover:border-primary/20 transition-all group"
+                      className="block p-5 bg-bg-card border border-border rounded-xl hover:border-primary/40 transition-colors group"
                     >
                       <h3 className="font-semibold text-text group-hover:text-primary transition-colors text-sm">
                         {resource.title}
@@ -67,16 +67,15 @@ export default function ResourcesPage() {
       </section>
 
       {/* Suggest Resource */}
-      <section className="py-16 bg-bg-alt">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-text mb-4">Know a Great Resource?</h2>
-          <p className="text-text-light mb-6">
-            Help us grow this collection. If you&apos;ve found a resource that&apos;s helped your career 
-            in tech, share it with the CSWN community.
+      <section className="py-16 bg-bg-alt border-t border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-xl font-bold text-text mb-2">Know a great resource?</h2>
+          <p className="text-text-light text-sm mb-6">
+            Help us grow this collection. Share any resource that&apos;s helped your career in tech.
           </p>
           <a
             href="mailto:cswn@purdue.edu?subject=Resource Suggestion"
-            className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm"
           >
             Suggest a Resource
           </a>
