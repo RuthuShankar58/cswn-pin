@@ -8,8 +8,8 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/events", label: "Events" },
+  { href: "/day-in-the-life", label: "Day in the Life" },
   { href: "/resources", label: "Resources" },
-  { href: "/get-involved", label: "Get Involved" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -42,7 +42,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Link
-              href="/get-involved"
+              href="/contact"
               className="ml-3 px-4 py-2 bg-primary text-bg text-sm font-semibold rounded-md hover:bg-primary-dark transition-colors"
             >
               Join CSWN
@@ -88,7 +88,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Link
-              href="/get-involved"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className="block mt-2 px-3 py-2.5 bg-primary text-bg text-sm font-semibold rounded-md text-center"
             >

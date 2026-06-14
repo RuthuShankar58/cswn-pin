@@ -3,165 +3,40 @@
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
 
-const membershipBenefits = [
-  { title: "Professional Development", description: "Resume workshops, mock interviews, and career coaching", icon: "📈" },
-  { title: "Industry Connections", description: "Network with professionals at top tech companies", icon: "🤝" },
-  { title: "Speaker Series Access", description: "Exclusive virtual sessions with industry leaders", icon: "🎤" },
-  { title: "Technical Workshops", description: "Hands-on learning opportunities and competitions", icon: "💻" },
-  { title: "Leadership Growth", description: "Committee and executive board opportunities", icon: "⭐" },
-  { title: "Community", description: "A supportive network of women and allies in tech", icon: "💜" },
-  { title: "Mentorship", description: "Peer and industry mentor matching programs", icon: "🧭" },
-  { title: "Company Visits", description: "Behind-the-scenes tours of leading tech companies", icon: "🏢" },
-];
-
-const volunteerOpportunities = [
-  { title: "Event Planning Committee", description: "Help plan and execute CSWN events, from speaker series to social gatherings.", commitment: "3–5 hrs/month" },
-  { title: "Marketing & Social Media", description: "Create content, manage social accounts, and grow CSWN's digital presence.", commitment: "2–4 hrs/week" },
-  { title: "Outreach & Partnerships", description: "Build relationships with sponsors, university departments, and community organizations.", commitment: "3–5 hrs/month" },
-  { title: "Technical Projects", description: "Contribute to CSWN's website, tools, and technical infrastructure.", commitment: "Flexible" },
-  { title: "Mentorship Program", description: "Guide newer members through their first year in CS and at Purdue.", commitment: "2–3 hrs/month" },
-  { title: "Workshop Facilitation", description: "Lead or co-lead technical or professional development workshops.", commitment: "As scheduled" },
-];
-
 export default function GetInvolvedPage() {
   return (
     <>
       <PageHero
         title="Get Involved"
-        subtitle="Whether you're looking to learn, lead, mentor, or connect — there's a place for you at CSWN."
+        subtitle="CSWN is open to all Purdue Indianapolis students who support women in computing."
         badge="Join Us"
       />
 
-      {/* Membership Benefits */}
       <section className="py-20 bg-bg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Free membership</p>
-            <h2 className="text-2xl font-bold text-text">What you get</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {membershipBenefits.map((benefit) => (
-              <div key={benefit.title} className="p-5 bg-bg-card border border-border rounded-xl">
-                <span className="text-2xl mb-2 block">{benefit.icon}</span>
-                <h3 className="font-semibold text-text text-sm mb-1">{benefit.title}</h3>
-                <p className="text-xs text-text-light">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-text mb-4">Ready to join?</h2>
+          <p className="text-text-light text-sm mb-10 leading-relaxed max-w-lg mx-auto">
+            Just show up to an event, join our Discord for announcements, or reach out directly. No experience needed — everyone is welcome.
+          </p>
 
-      {/* Join */}
-      <section className="py-20 bg-bg-alt border-y border-border">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Sign Up</p>
-            <h2 className="text-2xl font-bold text-text">Join CSWN</h2>
-            <p className="text-text-light text-sm mt-2">Ready to join? Sign up through BoilerLink or reach out to us directly.</p>
-          </div>
-
-          <div className="bg-bg-card border border-border rounded-xl p-8">
-            <div className="text-center mb-8">
-              <a
-                href="https://boilerlink.purdue.edu/organization/computersciencewomensnetworkindy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm"
-              >
-                Join on BoilerLink
-              </a>
-              <p className="text-xs text-text-lighter mt-3">Official Purdue student organization registration</p>
-            </div>
-
-            <div className="relative mb-8">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-border" />
-              </div>
-              <div className="relative flex justify-center">
-                <span className="bg-bg-card px-4 text-xs text-text-lighter">or reach out directly</span>
-              </div>
-            </div>
-
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-xs font-medium text-text-light mb-1">First Name</label>
-                  <input type="text" id="firstName" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors placeholder:text-text-lighter" placeholder="Your first name" />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-xs font-medium text-text-light mb-1">Last Name</label>
-                  <input type="text" id="lastName" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors placeholder:text-text-lighter" placeholder="Your last name" />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-xs font-medium text-text-light mb-1">Purdue Email</label>
-                <input type="email" id="email" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors placeholder:text-text-lighter" placeholder="yourname@purdue.edu" />
-              </div>
-              <div>
-                <label htmlFor="major" className="block text-xs font-medium text-text-light mb-1">Major</label>
-                <input type="text" id="major" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors placeholder:text-text-lighter" placeholder="e.g. Computer Science" />
-              </div>
-              <div>
-                <label htmlFor="year" className="block text-xs font-medium text-text-light mb-1">Year</label>
-                <select id="year" className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors">
-                  <option value="">Select your year</option>
-                  <option value="freshman">Freshman</option>
-                  <option value="sophomore">Sophomore</option>
-                  <option value="junior">Junior</option>
-                  <option value="senior">Senior</option>
-                  <option value="graduate">Graduate</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="interests" className="block text-xs font-medium text-text-light mb-1">What interests you about CSWN?</label>
-                <textarea id="interests" rows={3} className="w-full px-4 py-2.5 bg-bg border border-border rounded-lg text-text text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-colors resize-none placeholder:text-text-lighter" placeholder="Tell us what you're looking to gain from CSWN..." />
-              </div>
-              <button type="submit" className="w-full py-3 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm">
-                Express Interest
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      {/* Committee Roles */}
-      <section className="py-20 bg-bg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Go deeper</p>
-            <h2 className="text-2xl font-bold text-text">Committee opportunities</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {volunteerOpportunities.map((opp) => (
-              <div key={opp.title} className="bg-bg-card border border-border rounded-xl p-6">
-                <h3 className="font-semibold text-text mb-2">{opp.title}</h3>
-                <p className="text-sm text-text-light mb-3">{opp.description}</p>
-                <p className="text-xs text-primary font-medium">⏱ {opp.commitment}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Other ways */}
-      <section className="py-20 bg-bg-alt border-t border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-text mb-8">Other ways to get involved</h2>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {[
-              { emoji: "🎤", title: "Become a Speaker", desc: "Share your story with our members through our Day in the Life Speaker Series.", link: "/speaker-series", linkLabel: "Learn More" },
-              { emoji: "🧭", title: "Become a Mentor", desc: "Guide students through their tech journey. Alumni and industry professionals welcome.", link: "/contact", linkLabel: "Express Interest" },
-              { emoji: "🏢", title: "Industry Partnerships", desc: "Partner with CSWN through sponsorship, events, and recruitment opportunities.", link: "/sponsors", linkLabel: "Partner With Us" },
-            ].map((item) => (
-              <div key={item.title} className="bg-bg-card border border-border rounded-xl p-6">
-                <span className="text-2xl mb-3 block">{item.emoji}</span>
-                <h3 className="font-semibold text-text mb-2">{item.title}</h3>
-                <p className="text-sm text-text-light mb-4">{item.desc}</p>
-                <Link href={item.link} className="text-sm text-primary hover:text-primary-dark transition-colors font-medium">
-                  {item.linkLabel} →
-                </Link>
-              </div>
-            ))}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm"
+            >
+              Get in Touch
+            </Link>
+            <a
+              href="https://discord.gg/PLACEHOLDER"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-border text-text-light font-medium rounded-lg hover:border-primary/50 hover:text-text transition-colors text-sm"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z" />
+              </svg>
+              Join Discord
+            </a>
           </div>
         </div>
       </section>
