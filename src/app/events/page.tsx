@@ -3,12 +3,12 @@ import { recurringPrograms, eventCalendar } from "@/data/events";
 import Link from "next/link";
 
 const categoryColors: Record<string, string> = {
-  meeting: "bg-blue-100 text-blue-700",
-  speaker: "bg-purple-100 text-purple-700",
-  social: "bg-pink-100 text-pink-700",
-  professional: "bg-green-100 text-green-700",
-  competition: "bg-orange-100 text-orange-700",
-  outreach: "bg-teal-100 text-teal-700",
+  meeting: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
+  speaker: "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
+  social: "bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300",
+  professional: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
+  competition: "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300",
+  outreach: "bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300",
 };
 
 export default function EventsPage() {
@@ -21,11 +21,11 @@ export default function EventsPage() {
       />
 
       {/* Recurring Programs */}
-      <section className="py-20 bg-white">
+      <section className="py-20 section-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-4">Our Programs</h2>
-            <p className="text-text-light max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-text dark:text-text-dark mb-4">Our Programs</h2>
+            <p className="text-text-light dark:text-text-dark-light max-w-2xl mx-auto">
               CSWN runs a diverse set of recurring programs throughout the academic year.
             </p>
           </div>
@@ -34,26 +34,26 @@ export default function EventsPage() {
             {recurringPrograms.map((program) => (
               <div
                 key={program.id}
-                className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all group"
+                className="glass-card rounded-xl overflow-hidden hover-lift group"
               >
-                <div className="aspect-[16/9] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 flex items-center justify-center">
-                  <span className="text-text-lighter text-xs">Event Photo</span>
+                <div className="aspect-[16/9] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 dark:from-primary/20 dark:via-secondary/20 dark:to-accent/20 flex items-center justify-center">
+                  <span className="text-text-lighter dark:text-text-dark-light text-xs">Event Photo</span>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-2">
                     <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[program.category]}`}>
                       {program.category}
                     </span>
-                    <span className="text-xs text-text-lighter">{program.frequency}</span>
+                    <span className="text-xs text-text-lighter dark:text-text-dark-light">{program.frequency}</span>
                   </div>
-                  <h3 className="font-semibold text-text mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-semibold text-text dark:text-text-dark mb-2 group-hover:text-primary transition-colors">
                     {program.title}
                   </h3>
-                  <p className="text-sm text-text-light leading-relaxed line-clamp-3">
+                  <p className="text-sm text-text-light dark:text-text-dark-light leading-relaxed line-clamp-3">
                     {program.description}
                   </p>
                   {program.format && (
-                    <p className="text-xs text-text-lighter mt-3">
+                    <p className="text-xs text-text-lighter dark:text-text-dark-light mt-3">
                       📍 {program.format}
                     </p>
                   )}
@@ -65,11 +65,11 @@ export default function EventsPage() {
       </section>
 
       {/* Event Calendar */}
-      <section className="py-20 bg-bg-alt">
+      <section className="py-20 section-alt">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-4">Event Calendar</h2>
-            <p className="text-text-light max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-text dark:text-text-dark mb-4">Event Calendar</h2>
+            <p className="text-text-light dark:text-text-dark-light max-w-2xl mx-auto">
               Stay up to date with all upcoming CSWN events and activities.
             </p>
           </div>
@@ -79,10 +79,10 @@ export default function EventsPage() {
               {eventCalendar.map((event) => (
                 <div
                   key={event.id}
-                  className="bg-white p-5 rounded-xl border border-gray-100 hover:border-primary/30 hover:shadow-sm transition-all flex items-start gap-4"
+                  className="glass-card p-5 rounded-xl hover-lift flex items-start gap-4"
                 >
                   <div className="flex-shrink-0 w-16 text-center">
-                    <p className="text-xs text-text-lighter font-medium uppercase">
+                    <p className="text-xs text-text-lighter dark:text-text-dark-light font-medium uppercase">
                       {event.date.split(" ")[0]}
                     </p>
                     <p className="text-2xl font-bold text-primary">
@@ -91,14 +91,14 @@ export default function EventsPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold text-text text-sm">{event.title}</h3>
+                      <h3 className="font-semibold text-text dark:text-text-dark text-sm">{event.title}</h3>
                       <span className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[event.category]}`}>
                         {event.category}
                       </span>
                     </div>
-                    <p className="text-sm text-text-light">{event.description}</p>
+                    <p className="text-sm text-text-light dark:text-text-dark-light">{event.description}</p>
                     {event.location && (
-                      <p className="text-xs text-text-lighter mt-1">📍 {event.location}</p>
+                      <p className="text-xs text-text-lighter dark:text-text-dark-light mt-1">📍 {event.location}</p>
                     )}
                   </div>
                 </div>
@@ -109,11 +109,11 @@ export default function EventsPage() {
       </section>
 
       {/* Event Gallery Preview */}
-      <section className="py-20 bg-white">
+      <section className="py-20 section-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-text mb-4">Event Highlights</h2>
-            <p className="text-text-light max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-text dark:text-text-dark mb-4">Event Highlights</h2>
+            <p className="text-text-light dark:text-text-dark-light max-w-2xl mx-auto">
               Moments captured from past CSWN events.
             </p>
           </div>
@@ -122,20 +122,20 @@ export default function EventsPage() {
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <div
                 key={i}
-                className="aspect-square bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-xl flex items-center justify-center"
+                className="aspect-square bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 dark:from-primary/20 dark:via-secondary/20 dark:to-accent/20 rounded-xl flex items-center justify-center hover-lift border border-white/50 dark:border-white/10"
               >
-                <span className="text-text-lighter text-xs">Photo {i}</span>
+                <span className="text-text-lighter dark:text-text-dark-light text-xs">Photo {i}</span>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-10">
             <Link
-              href="/gallery"
-              className="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors"
+              href="/portal"
+              className="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors group"
             >
               View Full Gallery
-              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -144,16 +144,17 @@ export default function EventsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-text mb-4">Don&apos;t Miss Out</h2>
-          <p className="text-text-light mb-6">
+      <section className="py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 dark:from-primary/5 dark:via-secondary/5 dark:to-accent/5" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-text dark:text-text-dark mb-4">Don&apos;t Miss Out</h2>
+          <p className="text-text-light dark:text-text-dark-light mb-6">
             Follow us on social media and join CSWN to stay updated on all upcoming events.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/get-involved"
-              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors"
+              href="/portal"
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all shadow-lg shadow-primary/25 hover:-translate-y-0.5"
             >
               Join CSWN
             </Link>
@@ -161,7 +162,7 @@ export default function EventsPage() {
               href="https://www.instagram.com/cswn.indy/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-white text-text font-semibold rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"
+              className="inline-flex items-center justify-center px-6 py-3 glass-card text-text dark:text-text-dark font-semibold rounded-xl hover:bg-white/80 dark:hover:bg-white/10 transition-all hover:-translate-y-0.5"
             >
               Follow on Instagram
             </a>

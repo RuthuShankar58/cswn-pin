@@ -25,7 +25,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "CSWN | Computer Science Women's Network",
-    description: "Empowering Women in Technology Through Community, Leadership, and Opportunity",
+    description:
+      "Empowering Women in Technology Through Community, Leadership, and Opportunity",
     type: "website",
     locale: "en_US",
   },
@@ -37,10 +38,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="antialiased">
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="antialiased bg-bg dark:bg-bg-dark text-text dark:text-text-dark transition-colors duration-300">
         <Navigation />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen pt-16">{children}</main>
         <Footer />
       </body>
     </html>
