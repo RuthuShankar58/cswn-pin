@@ -65,18 +65,16 @@ export default function AnimatedCounter({
 
   return (
     <div ref={ref} className="text-center group">
-      <div className="relative inline-block">
-        {icon && (
-          <span className="text-2xl mb-2 block group-hover:scale-110 transition-transform">
-            {icon}
-          </span>
-        )}
-        <p className="text-4xl md:text-5xl font-bold gradient-text mb-1">
-          {count}
-          {suffix}
-        </p>
-        <div className="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-500 mx-auto rounded-full" />
-      </div>
+      {icon && (
+        <span className="text-2xl md:text-3xl mb-3 block group-hover:scale-110 transition-transform duration-300">
+          {icon}
+        </span>
+      )}
+      <p className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent mb-1.5 tracking-tight">
+        {count}
+        {suffix}
+      </p>
+      <div className="h-[2px] w-0 group-hover:w-10 bg-gradient-to-r from-primary to-secondary transition-all duration-500 mx-auto rounded-full" />
       <p className="text-sm text-text-light dark:text-text-dark-light font-medium mt-2">
         {label}
       </p>

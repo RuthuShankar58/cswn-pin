@@ -6,7 +6,7 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, badge }: PageHeroProps) {
   return (
-    <section className="relative section-alt pt-24 pb-16 overflow-hidden">
+    <section className="relative section-alt pt-20 md:pt-16 pb-16 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 dark:bg-secondary/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />

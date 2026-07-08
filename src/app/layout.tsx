@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "CSWN | Computer Science Women's Network - Purdue Indianapolis",
   description:
-    "Empowering women and allies in computing through professional development, technical growth, mentorship, leadership, networking, outreach, and community at Purdue University Indianapolis.",
+    "Empowering women and allies in computing through professional development, technical growth, mentorship, leadership, networking, outreach, and community at Purdue University in Indianapolis.",
   keywords: [
     "CSWN",
     "Computer Science Women's Network",
@@ -57,8 +57,10 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-bg dark:bg-bg-dark text-text dark:text-text-dark transition-colors duration-300">
         <Navigation />
-        <main className="min-h-screen pt-16">{children}</main>
-        <Footer />
+        <div className="md:pl-[72px] pt-14 md:pt-0">
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
