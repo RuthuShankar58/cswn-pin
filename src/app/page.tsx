@@ -2,25 +2,27 @@ import Link from "next/link";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import FlowerGarden from "@/components/FlowerGarden";
 
+const DISCORD_LINK = "https://discord.gg/XWEfRD3ZYU";
+
 export default function Home() {
   return (
     <>
       {/* Hero Section */}
       <section className="relative min-h-[55vh] flex items-center overflow-hidden">
-        {/* Light mode background - bright and intentional */}
+        {/* Light mode background */}
         <div className="absolute inset-0 bg-gradient-to-br from-sky-200/60 via-white to-pink-200/50 dark:hidden" />
         <div className="absolute inset-0 bg-gradient-to-tl from-rose-100/40 via-transparent to-blue-100/50 dark:hidden" />
 
-        {/* Dark mode background - rich depth */}
+        {/* Dark mode background */}
         <div className="absolute inset-0 hidden dark:block bg-gradient-to-br from-[#06101f] via-[#0a0e1a] to-[#140a1e]" />
         <div className="absolute inset-0 hidden dark:block bg-gradient-to-tl from-blue-900/20 via-transparent to-purple-900/20" />
 
-        {/* Radial glow blobs - vivid */}
+        {/* Radial glow blobs */}
         <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-sky-300/15 dark:bg-primary/20 rounded-full blur-[100px] animate-pulse-glow" />
         <div className="absolute bottom-[10%] left-[10%] w-[400px] h-[400px] bg-pink-300/15 dark:bg-secondary/15 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
         <div className="absolute top-[40%] right-[5%] w-[350px] h-[350px] bg-violet-200/12 dark:bg-accent/15 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "3s" }} />
 
-        {/* Intentional geometric accents */}
+        {/* Geometric accents */}
         <div className="absolute top-[22%] left-[12%] w-16 h-16 border border-primary/15 dark:border-primary/25 rounded-2xl rotate-12 animate-float-slow hidden lg:block" />
         <div className="absolute bottom-[28%] right-[10%] w-12 h-12 border border-secondary/15 dark:border-secondary/25 rounded-full animate-float hidden lg:block" style={{ animationDelay: "1s" }} />
         <div className="absolute top-[55%] left-[6%] w-10 h-10 border border-accent/12 dark:border-accent/20 rounded-xl -rotate-12 animate-float hidden lg:block" style={{ animationDelay: "2s" }} />
@@ -28,12 +30,14 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
           <div className="text-center max-w-5xl mx-auto animate-fade-in-up">
             <span className="inline-flex items-center gap-2 px-5 py-2 bg-white/70 dark:bg-white/5 backdrop-blur-sm text-primary text-sm font-medium rounded-full mb-6 border border-primary/20 dark:border-primary/30 shadow-sm">
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <img src="/Purdue.png" alt="Purdue" className="w-5 h-5 object-contain" />
               Purdue University in Indianapolis
             </span>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.05] mb-6 tracking-tight">
-              <span className="block text-text dark:text-white">Computer Science</span>
+              <span className="block bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                Computer Science
+              </span>
               <span className="block mt-1 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent dark:drop-shadow-[0_0_30px_rgba(124,198,254,0.3)]">
                 Women&apos;s Network
               </span>
@@ -45,15 +49,17 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/portal"
+              <a
+                href={DISCORD_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center px-9 py-4 bg-primary text-white font-semibold rounded-2xl hover:bg-primary-dark transition-all duration-300 shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 active:translate-y-0"
               >
                 Join Us
                 <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+              </a>
               <Link
                 href="/events"
                 className="inline-flex items-center justify-center px-9 py-4 bg-white/70 dark:bg-white/5 backdrop-blur-sm border-2 border-primary/20 dark:border-primary/30 text-primary font-semibold rounded-2xl hover:bg-primary/5 dark:hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
@@ -65,13 +71,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Impact Stats - tighter to hero */}
+      {/* Impact Stats */}
       <section className="relative py-8 overflow-hidden -mt-10">
         <div className="absolute inset-0 bg-gradient-to-b from-sky-50/60 via-white to-white dark:from-[#0a1020] dark:via-[#0c1225] dark:to-[#0a0f1e]" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/4 via-transparent to-secondary/4 dark:from-primary/6 dark:to-secondary/6" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="glass-card rounded-3xl p-8 md:p-12 shadow-xl shadow-primary/5 dark:shadow-primary/10 border border-white/60 dark:border-white/10">
+          <div className="glass-card rounded-3xl p-8 md:p-12 shadow-2xl shadow-primary/10 dark:shadow-primary/20 border border-primary/15 dark:border-primary/20">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
               <AnimatedCounter end={75} suffix="+" label="Members" />
               <AnimatedCounter end={50} suffix="+" label="Events Hosted" />
@@ -97,10 +103,9 @@ export default function Home() {
               </span>
               <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-secondary rounded-full" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-text dark:text-white tracking-tight">
-              Building Community,{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Breaking Barriers
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                Building Community, Breaking Barriers
               </span>
             </h2>
           </div>
@@ -108,7 +113,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="glass-card rounded-3xl p-8 md:p-10 shadow-lg shadow-primary/5 dark:shadow-primary/10 border border-white/60 dark:border-white/10">
               <p className="text-lg text-text-light dark:text-text-dark-light leading-relaxed mb-5">
-                Founded in 2024, the Computer Science Women&apos;s Network (CSWN) at Purdue University in 
+                The Computer Science Women&apos;s Network (CSWN) at Purdue University in
                 Indianapolis is dedicated to empowering women and allies in computing through
                 professional development, technical growth, mentorship, leadership opportunities,
                 networking, outreach, and community.
@@ -130,17 +135,25 @@ export default function Home() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { label: "Growth", desc: "Develop your skills", color: "from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-950/10 border-green-200/60 dark:border-green-700/30" },
-                { label: "Innovation", desc: "Push boundaries", color: "from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-950/10 border-amber-200/60 dark:border-amber-700/30" },
-                { label: "Connection", desc: "Build your network", color: "from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-950/10 border-blue-200/60 dark:border-blue-700/30" },
-                { label: "Opportunity", desc: "Launch your career", color: "from-purple-100 to-purple-50 dark:from-purple-900/30 dark:to-purple-950/10 border-purple-200/60 dark:border-purple-700/30" },
+                { label: "Growth", desc: "Develop your skills", image: "/mission-growth.jpeg" },
+                { label: "Innovation", desc: "Push boundaries", image: "/mission-innovation.jpeg" },
+                { label: "Connection", desc: "Build your network", image: "/mission-connection.jpeg" },
+                { label: "Opportunity", desc: "Launch your career", image: "/mission-opportunity.jpeg" },
               ].map((item) => (
                 <div
                   key={item.label}
-                  className={`aspect-square rounded-2xl bg-gradient-to-br ${item.color} flex flex-col items-center justify-center hover-lift border shadow-sm`}
+                  className="aspect-square rounded-2xl overflow-hidden relative hover-lift border border-white/40 dark:border-white/10 shadow-md group"
                 >
-                  <p className="text-base font-bold text-text dark:text-text-dark">{item.label}</p>
-                  <p className="text-xs text-text-light dark:text-text-dark-light mt-1">{item.desc}</p>
+                  <img
+                    src={item.image}
+                    alt={item.label}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <p className="text-sm font-bold">{item.label}</p>
+                    <p className="text-xs opacity-80 mt-0.5">{item.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -166,21 +179,23 @@ export default function Home() {
                 </h2>
                 <p className="text-text-light dark:text-text-dark-light leading-relaxed mb-4">
                   Every visitor plants a flower in our garden. Each bloom represents someone
-                  who found their way here, community, growth, and mentorship taking root.
+                  who found their way here — community, growth, and mentorship taking root.
                 </p>
                 <p className="text-sm text-text-lighter dark:text-text-dark-light mb-8 italic">
                   Ready to grow with us?
                 </p>
                 <div className="flex flex-col gap-3">
-                  <Link
-                    href="/portal"
+                  <a
+                    href={DISCORD_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group inline-flex items-center justify-center px-7 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
                   >
                     Join CSWN Today
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </Link>
+                  </a>
                   <Link
                     href="/sponsors"
                     className="inline-flex items-center justify-center px-7 py-3.5 bg-white/60 dark:bg-white/5 backdrop-blur-sm text-text dark:text-text-dark font-semibold rounded-xl border border-gray-200/60 dark:border-white/10 hover:border-primary/30 transition-all hover:-translate-y-0.5"
