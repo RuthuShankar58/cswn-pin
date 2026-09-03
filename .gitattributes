@@ -1,0 +1,2 @@
+# Keep shell scripts LF so they run on the Purdue Linux host
+*.sh text eol=lf
