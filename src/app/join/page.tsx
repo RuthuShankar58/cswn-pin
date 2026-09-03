@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { openRoles } from "@/data/team";
-import { PHOTOS } from "@/data/photos";
+import { joinPhotos } from "@/data/photos";
 
 export const metadata: Metadata = {
   title: "Join CSWN",
@@ -64,24 +64,20 @@ export default function JoinPage() {
               out of it.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-3">
-              <div className="relative aspect-square overflow-hidden rounded-xl border border-border bg-bg-subtle">
-                <Image
-                  src={PHOTOS.networking.src}
-                  alt={PHOTOS.networking.alt}
-                  fill
-                  sizes="(max-width: 768px) 45vw, 22vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative aspect-square overflow-hidden rounded-xl border border-border bg-bg-subtle">
-                <Image
-                  src={PHOTOS.paintBoba.src}
-                  alt={PHOTOS.paintBoba.alt}
-                  fill
-                  sizes="(max-width: 768px) 45vw, 22vw"
-                  className="object-cover"
-                />
-              </div>
+              {joinPhotos.map((photo) => (
+                <div
+                  key={photo.src}
+                  className="relative aspect-square overflow-hidden rounded-xl border border-border bg-bg-subtle"
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 768px) 45vw, 22vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
             </div>
           </div>
           <ul className="space-y-3" data-reveal>

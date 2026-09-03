@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { partners } from "@/data/sponsors";
-import { PHOTOS } from "@/data/photos";
+import { aboutFocusPhotos } from "@/data/photos";
 
 export const metadata: Metadata = {
   title: "About",
@@ -15,26 +15,24 @@ const values = [
   {
     title: "Professional development",
     body: "Resume and LinkedIn workshops, mock interviews, personal-website sessions, and career-fair prep — often run with HR professionals and industry partners.",
-    photo: PHOTOS.careerTrip,
+    photo: aboutFocusPhotos[0],
   },
   {
     title: "Technical growth",
     body: "The AI Build Challenge, hackathon ideation with the CS Club, and workshops that give members something concrete to build and show.",
-    photo: PHOTOS.webWorkshop,
+    photo: aboutFocusPhotos[1],
   },
   {
     title: "Mentorship",
     body: "The Day in the Life speaker series connects members with women already working in tech who talk openly about their roles and paths.",
-    photo: PHOTOS.talk,
+    photo: aboutFocusPhotos[2],
   },
   {
     title: "Community",
     body: "Socials, collaborations with other student orgs, and a Discord where members trade advice, referrals, and moral support during finals.",
-    photo: PHOTOS.paintBoba,
+    photo: aboutFocusPhotos[3],
   },
 ];
-
-const missionPhotos = [PHOTOS.callout, PHOTOS.networking, PHOTOS.pieOfficer];
 
 export default function AboutPage() {
   return (
@@ -68,23 +66,6 @@ export default function AboutPage() {
                 senior lining up full-time offers, there&apos;s a place for you
                 here.
               </p>
-            </div>
-
-            <div className="mt-8 grid grid-cols-3 gap-3">
-              {missionPhotos.map((photo) => (
-                <div
-                  key={photo.src}
-                  className="relative aspect-[3/4] overflow-hidden rounded-xl border border-border bg-bg-subtle"
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes="(max-width: 768px) 30vw, 18vw"
-                    className="object-cover"
-                  />
-                </div>
-              ))}
             </div>
           </div>
 

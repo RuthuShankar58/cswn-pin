@@ -1,34 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
-import Gallery from "@/components/Gallery";
 import { officers, openRoles } from "@/data/team";
-import { PHOTOS } from "@/data/photos";
-
-const teamGallery = [
-  PHOTOS.paintGroup,
-  PHOTOS.callout,
-  PHOTOS.networking,
-  PHOTOS.webWorkshop,
-  PHOTOS.pieOfficer,
-  PHOTOS.socialFood,
-  PHOTOS.calloutBoard,
-  PHOTOS.fairTable,
-];
+import { officerGraphic } from "@/data/photos";
 
 export const metadata: Metadata = {
   title: "Team",
   description:
     "Meet the CSWN executive board and see the officer positions currently open for applications.",
 };
-
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join("");
-}
 
 export default function TeamPage() {
   return (
@@ -47,84 +27,48 @@ export default function TeamPage() {
             <h2 className="text-2xl font-bold md:text-3xl">2025–26 officers</h2>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {officers.map((o, i) => (
-              <div
-                key={o.id}
-                className="card card-hover flex flex-col p-6"
-                data-reveal
-                style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
-              >
-                <div className="flex items-center gap-4">
-                  {o.image ? (
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {officers.map((o, i) => {
+              const graphic =
+                officerGraphic[o.id as keyof typeof officerGraphic];
+              return (
+                <div
+                  key={o.id}
+                  className="card card-hover overflow-hidden"
+                  data-reveal
+                  style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
+                >
+                  {graphic && (
                     <Image
-                      src={o.image}
-                      alt={o.name}
-                      width={56}
-                      height={56}
-                      className="h-14 w-14 rounded-full object-cover"
+                      src={graphic.src}
+                      alt={graphic.alt}
+                      width={graphic.w}
+                      height={graphic.h}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="h-auto w-full border-b border-border"
                     />
-                  ) : (
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-2 text-sm font-bold text-accent-contrast dark:text-[#12101a]">
-                      {initials(o.name)}
-                    </span>
                   )}
-                  <div>
+                  <div className="p-5">
                     <p className="font-semibold">{o.name}</p>
                     <p className="text-sm text-accent">{o.role}</p>
+                    {o.email && (
+                      <a
+                        href={`mailto:${o.email}`}
+                        className="mt-2 inline-block text-sm font-medium text-text-muted hover:text-text"
+                      >
+                        {o.email}
+                      </a>
+                    )}
                   </div>
                 </div>
-
-                {o.bio && (
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-text-muted">
-                    {o.bio}
-                  </p>
-                )}
-
-                <dl className="mt-4 space-y-1 text-xs text-text-muted">
-                  {o.major && (
-                    <div>
-                      <dt className="sr-only">Major</dt>
-                      <dd>{o.major}</dd>
-                    </div>
-                  )}
-                  {o.gradYear && (
-                    <div>
-                      <dt className="sr-only">Graduation year</dt>
-                      <dd>Class of {o.gradYear}</dd>
-                    </div>
-                  )}
-                </dl>
-
-                {o.email && (
-                  <a
-                    href={`mailto:${o.email}`}
-                    className="mt-4 inline-block text-sm font-medium text-accent hover:underline"
-                  >
-                    {o.email}
-                  </a>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
-        </div>
-      </section>
-
-      {/* Life at CSWN */}
-      <section className="section border-t border-border bg-bg-subtle">
-        <div className="container-page">
-          <div data-reveal>
-            <p className="eyebrow mb-3">Life at CSWN</p>
-            <h2 className="text-2xl font-bold md:text-3xl">
-              What we get up to
-            </h2>
-          </div>
-          <Gallery photos={teamGallery} className="mt-10" />
         </div>
       </section>
 
       {/* Open roles */}
-      <section className="section border-t border-border">
+      <section className="section border-t border-border bg-bg-subtle">
         <div className="container-page">
           <div data-reveal>
             <p className="eyebrow mb-3">We&apos;re hiring</p>
