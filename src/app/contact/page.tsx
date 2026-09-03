@@ -21,7 +21,7 @@ export default function ContactPage() {
       <section className="section">
         <div className="container-page grid gap-12 md:grid-cols-[1fr_1fr]">
           {/* Email + note */}
-          <div>
+          <div data-reveal>
             <h2 className="text-2xl font-bold">Email</h2>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
@@ -53,7 +53,7 @@ export default function ContactPage() {
           </div>
 
           {/* Socials */}
-          <div>
+          <div data-reveal style={{ "--reveal-delay": "100ms" } as React.CSSProperties}>
             <h2 className="text-2xl font-bold">Find us online</h2>
             <div className="mt-3 divide-y divide-border overflow-hidden rounded-xl border border-border bg-bg-card">
               {SOCIALS.map((s) => (
@@ -62,7 +62,7 @@ export default function ContactPage() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-4 transition-colors hover:bg-bg-subtle"
+                  className="group flex items-center justify-between p-4 transition-colors hover:bg-accent-soft"
                 >
                   <span>
                     <span className="font-medium">{s.label}</span>
@@ -70,7 +70,9 @@ export default function ContactPage() {
                       {s.handle}
                     </span>
                   </span>
-                  <span className="text-text-muted">→</span>
+                  <span className="text-text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-accent">
+                    →
+                  </span>
                 </a>
               ))}
             </div>
@@ -80,11 +82,18 @@ export default function ContactPage() {
 
       <section className="section border-t border-border bg-bg-subtle">
         <div className="container-page">
-          <p className="eyebrow mb-3">Officers</p>
-          <h2 className="text-2xl font-bold md:text-3xl">Reach a board member</h2>
+          <div data-reveal>
+            <p className="eyebrow mb-3">Officers</p>
+            <h2 className="text-2xl font-bold md:text-3xl">Reach a board member</h2>
+          </div>
           <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            {officers.map((o) => (
-              <div key={o.id} className="card p-5">
+            {officers.map((o, i) => (
+              <div
+                key={o.id}
+                className="card card-hover p-5"
+                data-reveal
+                style={{ "--reveal-delay": `${i * 70}ms` } as React.CSSProperties}
+              >
                 <p className="font-semibold">{o.name}</p>
                 <p className="text-sm text-accent">{o.role}</p>
                 {o.email && (

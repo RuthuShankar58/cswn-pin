@@ -48,13 +48,14 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                  active
-                    ? "text-accent"
-                    : "text-text-muted hover:text-text"
+                className={`relative rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                  active ? "text-accent" : "text-text-muted hover:text-text"
                 }`}
               >
                 {link.label}
+                {active && (
+                  <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-gradient-to-r from-accent to-accent-2" />
+                )}
               </Link>
             );
           })}

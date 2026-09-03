@@ -29,12 +29,19 @@ export default function TeamPage() {
       {/* Executive board */}
       <section className="section">
         <div className="container-page">
-          <p className="eyebrow mb-3">Executive board</p>
-          <h2 className="text-2xl font-bold md:text-3xl">2025–26 officers</h2>
+          <div data-reveal>
+            <p className="eyebrow mb-3">Executive board</p>
+            <h2 className="text-2xl font-bold md:text-3xl">2025–26 officers</h2>
+          </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {officers.map((o) => (
-              <div key={o.id} className="card flex flex-col p-6">
+            {officers.map((o, i) => (
+              <div
+                key={o.id}
+                className="card card-hover flex flex-col p-6"
+                data-reveal
+                style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
+              >
                 <div className="flex items-center gap-4">
                   {o.image ? (
                     <Image
@@ -45,7 +52,7 @@ export default function TeamPage() {
                       className="h-14 w-14 rounded-full object-cover"
                     />
                   ) : (
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-sm font-bold text-accent">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-2 text-sm font-bold text-accent-contrast dark:text-[#12101a]">
                       {initials(o.name)}
                     </span>
                   )}
@@ -93,16 +100,23 @@ export default function TeamPage() {
       {/* Open roles */}
       <section className="section border-t border-border bg-bg-subtle">
         <div className="container-page">
-          <p className="eyebrow mb-3">We&apos;re hiring</p>
-          <h2 className="text-2xl font-bold md:text-3xl">Open positions</h2>
-          <p className="mt-3 max-w-2xl text-text-muted">
-            Applications are open now. Each role has its own short form — first-
-            and second-years are encouraged to apply.
-          </p>
+          <div data-reveal>
+            <p className="eyebrow mb-3">We&apos;re hiring</p>
+            <h2 className="text-2xl font-bold md:text-3xl">Open positions</h2>
+            <p className="mt-3 max-w-2xl text-text-muted">
+              Applications are open now. Each role has its own short form — first-
+              and second-years are encouraged to apply.
+            </p>
+          </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
-            {openRoles.map((r) => (
-              <div key={r.id} className="card flex flex-col p-6">
+            {openRoles.map((r, i) => (
+              <div
+                key={r.id}
+                className="card card-hover flex flex-col p-6"
+                data-reveal
+                style={{ "--reveal-delay": `${i * 70}ms` } as React.CSSProperties}
+              >
                 <h3 className="text-lg font-semibold">{r.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
                   {r.blurb}

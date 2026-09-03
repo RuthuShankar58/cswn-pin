@@ -39,7 +39,7 @@ export default function AboutPage() {
 
       <section className="section">
         <div className="container-page grid gap-12 md:grid-cols-[1.4fr_1fr]">
-          <div>
+          <div data-reveal>
             <h2 className="text-2xl font-bold">Our mission</h2>
             <div className="mt-4 space-y-4 text-text-muted leading-relaxed">
               <p>
@@ -63,7 +63,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <aside className="card h-fit p-6">
+          <aside className="card h-fit p-6" data-reveal style={{ "--reveal-delay": "100ms" } as React.CSSProperties}>
             <h3 className="font-semibold">Who can join</h3>
             <ul className="mt-3 space-y-2 text-sm text-text-muted">
               <li>· Any student at Purdue University in Indianapolis</li>
@@ -80,11 +80,18 @@ export default function AboutPage() {
 
       <section className="section border-t border-border bg-bg-subtle">
         <div className="container-page">
-          <p className="eyebrow mb-3">What we focus on</p>
-          <h2 className="text-2xl font-bold md:text-3xl">Four things, all year</h2>
+          <div data-reveal>
+            <p className="eyebrow mb-3">What we focus on</p>
+            <h2 className="text-2xl font-bold md:text-3xl">Four things, all year</h2>
+          </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
-            {values.map((v) => (
-              <div key={v.title} className="card p-6">
+            {values.map((v, i) => (
+              <div
+                key={v.title}
+                className="card card-hover p-6"
+                data-reveal
+                style={{ "--reveal-delay": `${i * 70}ms` } as React.CSSProperties}
+              >
                 <h3 className="text-lg font-semibold">{v.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-muted">
                   {v.body}
@@ -97,15 +104,17 @@ export default function AboutPage() {
 
       <section className="section">
         <div className="container-page">
-          <p className="eyebrow mb-3">Partners &amp; sponsors</p>
-          <h2 className="text-2xl font-bold md:text-3xl">
-            Companies that support CSWN
-          </h2>
-          <p className="mt-3 max-w-2xl text-text-muted">
-            These organizations have sponsored events, sent speakers, or hosted
-            our members on site.
-          </p>
-          <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
+          <div data-reveal>
+            <p className="eyebrow mb-3">Partners &amp; sponsors</p>
+            <h2 className="text-2xl font-bold md:text-3xl">
+              Companies that support CSWN
+            </h2>
+            <p className="mt-3 max-w-2xl text-text-muted">
+              These organizations have sponsored events, sent speakers, or hosted
+              our members on site.
+            </p>
+          </div>
+          <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3" data-reveal>
             {partners.map((p) => (
               <div
                 key={p.id}

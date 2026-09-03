@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local screenshots
 .shots/
+
+# local Claude Code session config
+.claude/settings.json

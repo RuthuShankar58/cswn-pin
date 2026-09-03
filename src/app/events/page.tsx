@@ -25,14 +25,16 @@ export default function EventsPage() {
       {/* This semester */}
       <section className="section">
         <div className="container-page">
-          <p className="eyebrow mb-3">This semester</p>
-          <h2 className="text-2xl font-bold md:text-3xl">Schedule</h2>
+          <div data-reveal>
+            <p className="eyebrow mb-3">This semester</p>
+            <h2 className="text-2xl font-bold md:text-3xl">Schedule</h2>
+          </div>
 
-          <ul className="mt-8 divide-y divide-border overflow-hidden rounded-xl border border-border bg-bg-card">
+          <ul className="mt-8 divide-y divide-border overflow-hidden rounded-xl border border-border bg-bg-card" data-reveal>
             {upcomingEvents.map((e) => (
-              <li key={e.id} className="flex items-center gap-5 p-5">
-                <div className="flex w-14 shrink-0 flex-col items-center rounded-lg bg-bg-subtle py-2">
-                  <span className="text-[11px] font-semibold uppercase text-text-muted">
+              <li key={e.id} className="flex items-center gap-5 p-5 transition-colors hover:bg-accent-soft/60">
+                <div className="flex w-14 shrink-0 flex-col items-center rounded-lg bg-gradient-to-br from-accent to-accent-2 py-2 text-accent-contrast dark:text-[#12101a]">
+                  <span className="text-[11px] font-semibold uppercase opacity-80">
                     {e.month}
                   </span>
                   <span className="text-lg font-bold leading-none">{e.day}</span>
@@ -59,13 +61,20 @@ export default function EventsPage() {
       {/* Recurring programs */}
       <section className="section border-t border-border bg-bg-subtle">
         <div className="container-page">
-          <p className="eyebrow mb-3">Recurring programs</p>
-          <h2 className="text-2xl font-bold md:text-3xl">
-            The things we run every year
-          </h2>
+          <div data-reveal>
+            <p className="eyebrow mb-3">Recurring programs</p>
+            <h2 className="text-2xl font-bold md:text-3xl">
+              The things we run every year
+            </h2>
+          </div>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {programs.map((p) => (
-              <div key={p.id} className="card p-6">
+            {programs.map((p, i) => (
+              <div
+                key={p.id}
+                className="card card-hover p-6"
+                data-reveal
+                style={{ "--reveal-delay": `${i * 60}ms` } as React.CSSProperties}
+              >
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold">{p.title}</h3>
                   <span className="shrink-0 rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-semibold text-accent">
@@ -87,15 +96,18 @@ export default function EventsPage() {
       {/* Past terms */}
       <section className="section">
         <div className="container-page">
-          <p className="eyebrow mb-3">Previously</p>
-          <h2 className="text-2xl font-bold md:text-3xl">Past terms</h2>
+          <div data-reveal>
+            <p className="eyebrow mb-3">Previously</p>
+            <h2 className="text-2xl font-bold md:text-3xl">Past terms</h2>
+          </div>
           <div className="mt-10 space-y-10">
             {pastTerms.map((t) => (
               <div
                 key={t.term}
                 className="grid gap-4 md:grid-cols-[160px_1fr]"
+                data-reveal
               >
-                <h3 className="text-lg font-semibold">{t.term}</h3>
+                <h3 className="text-lg font-bold gradient-text">{t.term}</h3>
                 <div className="flex flex-wrap gap-2">
                   {t.highlights.map((h) => (
                     <span
