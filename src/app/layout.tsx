@@ -7,29 +7,29 @@ import Footer from "@/components/Footer";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "CSWN | Computer Science Women's Network - Purdue Indianapolis",
+  metadataBase: new URL("https://cswnindy.org"),
+  title: {
+    default: "CSWN — Computer Science Women's Network at Purdue Indianapolis",
+    template: "%s | CSWN",
+  },
   description:
-    "Empowering women and allies in computing through professional development, technical growth, mentorship, leadership, networking, outreach, and community at Purdue University in Indianapolis.",
+    "The Computer Science Women's Network (CSWN) builds community, mentorship, and professional growth for women and allies in computing at Purdue University in Indianapolis.",
   keywords: [
     "CSWN",
     "Computer Science Women's Network",
     "Purdue Indianapolis",
-    "Purdue University Indianapolis",
-    "CSWN Indy",
     "women in tech",
     "women in computing",
     "Indianapolis tech",
-    "computer science",
-    "professional development",
-    "mentorship",
   ],
   openGraph: {
-    title: "CSWN | Computer Science Women's Network",
+    title: "CSWN — Computer Science Women's Network",
     description:
-      "Empowering Women in Technology Through Community, Leadership, and Opportunity",
+      "Community, mentorship, and professional growth for women and allies in computing at Purdue University in Indianapolis.",
     type: "website",
     locale: "en_US",
   },
@@ -45,25 +45,14 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch(e) {}
-              })();
-            `,
+            __html: `(function(){try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})();`,
           }}
         />
       </head>
-      <body className="antialiased bg-bg dark:bg-bg-dark text-text dark:text-text-dark transition-colors duration-300">
+      <body className="min-h-screen">
         <Navigation />
-        <div className="md:pl-[72px] pt-14 md:pt-0">
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </div>
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,104 +1,127 @@
-import PageHero from "@/components/PageHero";
+import type { Metadata } from "next";
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
+import { partners } from "@/data/sponsors";
 
-const coreValues = [
-  { title: "Empowerment", icon: "💜" },
-  { title: "Community", icon: "🤝" },
-  { title: "Growth", icon: "🌱" },
-  { title: "Leadership", icon: "🔥" },
-  { title: "Inclusivity", icon: "⭐" },
-  { title: "Excellence", icon: "🎯" },
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "CSWN's mission, what we do, and who can join — a community for women and allies in computing at Purdue University in Indianapolis.",
+};
+
+const values = [
+  {
+    title: "Professional development",
+    body: "Resume and LinkedIn workshops, mock interviews, personal-website sessions, and career-fair prep — often run with HR professionals and industry partners.",
+  },
+  {
+    title: "Technical growth",
+    body: "The AI Build Challenge, hackathon ideation with the CS Club, and workshops that give members something concrete to build and show.",
+  },
+  {
+    title: "Mentorship",
+    body: "The Day in the Life speaker series connects members with women already working in tech who talk openly about their roles and paths.",
+  },
+  {
+    title: "Community",
+    body: "Socials, collaborations with other student orgs, and a Discord where members trade advice, referrals, and moral support during finals.",
+  },
 ];
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="About CSWN"
-        subtitle="Empowering women and allies in computing at Purdue University Indianapolis."
-        badge="Our Story"
+        badge="About CSWN"
+        title="A network for women in computing"
+        subtitle="The Computer Science Women's Network is a student organization at Purdue University in Indianapolis."
       />
 
-      {/* Story + Stats */}
-      <section className="py-20 bg-bg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-2xl font-bold text-text mb-5">Who we are</h2>
-              <div className="space-y-4 text-text-light leading-relaxed text-sm">
-                <p>
-                  The Computer Science Women&apos;s Network (CSWN) was founded in 2024 to build a supportive
-                  community for women in CS and tech at Purdue Indianapolis.
-                </p>
-                <p>
-                  We run workshops, speaker series, social events, and industry partnerships — all designed
-                  to help our members grow professionally and personally.
-                </p>
-              </div>
-              <div className="mt-8">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm"
-                >
-                  Get Involved
-                </Link>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: "100+", label: "Members" },
-                { value: "15+", label: "Events/Semester" },
-                { value: "6", label: "Partners" },
-                { value: "2024", label: "Founded" },
-              ].map((s) => (
-                <div key={s.label} className="bg-bg-card border border-border rounded-xl p-6 text-center">
-                  <p className="text-3xl font-bold text-primary mb-1">{s.value}</p>
-                  <p className="text-xs text-text-light">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="py-16 bg-bg-alt border-y border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-bg-card border border-border rounded-xl p-8">
-              <h3 className="text-lg font-bold text-text mb-3">Our Mission</h3>
-              <p className="text-text-light text-sm leading-relaxed">
-                Empower women and allies in computing through professional development,
-                technical growth, mentorship, and community at Purdue Indianapolis.
+      <section className="section">
+        <div className="container-page grid gap-12 md:grid-cols-[1.4fr_1fr]">
+          <div>
+            <h2 className="text-2xl font-bold">Our mission</h2>
+            <div className="mt-4 space-y-4 text-text-muted leading-relaxed">
+              <p>
+                CSWN exists to make computing at Purdue Indianapolis a more
+                welcoming, connected place for women and allies. The field is
+                still far from balanced, and a degree is a lot harder to finish
+                without people around you who get it.
               </p>
-            </div>
-            <div className="bg-bg-card border border-border rounded-xl p-8">
-              <h3 className="text-lg font-bold text-text mb-3">Our Vision</h3>
-              <p className="text-text-light text-sm leading-relaxed">
-                A campus where women are equally represented and celebrated in tech —
-                where every student has the resources and community to thrive in computing.
+              <p>
+                We do that through consistent programming — career workshops,
+                a biweekly speaker series, technical challenges, and low-key
+                socials — plus partnerships with companies like Eli Lilly,
+                Amway, and Liberty Mutual that open doors to internships and
+                mentors.
+              </p>
+              <p>
+                Whether you&apos;re a first-year still deciding on a major or a
+                senior lining up full-time offers, there&apos;s a place for you
+                here.
               </p>
             </div>
           </div>
+
+          <aside className="card h-fit p-6">
+            <h3 className="font-semibold">Who can join</h3>
+            <ul className="mt-3 space-y-2 text-sm text-text-muted">
+              <li>· Any student at Purdue University in Indianapolis</li>
+              <li>· All majors and class years welcome</li>
+              <li>· Women and allies in computing</li>
+              <li>· No application needed to attend events</li>
+            </ul>
+            <Link href="/join" className="btn btn-primary mt-5 w-full">
+              How to get involved
+            </Link>
+          </aside>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-16 bg-bg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-2">Values</p>
-            <h2 className="text-2xl font-bold text-text">What we stand for</h2>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {coreValues.map((value) => (
-              <div key={value.title} className="flex items-center gap-2 px-4 py-2.5 bg-bg-card border border-border rounded-xl">
-                <span className="text-base">{value.icon}</span>
-                <span className="text-sm font-medium text-text">{value.title}</span>
+      <section className="section border-t border-border bg-bg-subtle">
+        <div className="container-page">
+          <p className="eyebrow mb-3">What we focus on</p>
+          <h2 className="text-2xl font-bold md:text-3xl">Four things, all year</h2>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            {values.map((v) => (
+              <div key={v.title} className="card p-6">
+                <h3 className="text-lg font-semibold">{v.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                  {v.body}
+                </p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-page">
+          <p className="eyebrow mb-3">Partners &amp; sponsors</p>
+          <h2 className="text-2xl font-bold md:text-3xl">
+            Companies that support CSWN
+          </h2>
+          <p className="mt-3 max-w-2xl text-text-muted">
+            These organizations have sponsored events, sent speakers, or hosted
+            our members on site.
+          </p>
+          <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
+            {partners.map((p) => (
+              <div
+                key={p.id}
+                className="flex items-center justify-center bg-bg-card px-4 py-8 text-center text-sm font-medium text-text-muted"
+              >
+                {p.name}
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-text-muted">
+            Interested in partnering with CSWN?{" "}
+            <Link href="/contact" className="font-semibold text-accent hover:underline">
+              Get in touch
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </>

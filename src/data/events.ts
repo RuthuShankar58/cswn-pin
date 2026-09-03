@@ -1,230 +1,154 @@
-export interface CSWNEvent {
+export type EventCategory =
+  | "meeting"
+  | "speaker"
+  | "social"
+  | "professional"
+  | "competition"
+  | "outreach";
+
+export interface UpcomingEvent {
   id: string;
+  month: string; // e.g. "SEP"
+  day: string; // e.g. "16"
   title: string;
-  date: string;
-  time?: string;
-  location?: string;
-  description: string;
-  category: "meeting" | "speaker" | "social" | "professional" | "competition" | "outreach";
-  image?: string;
-  registrationLink?: string;
-  isPast?: boolean;
+  category: EventCategory;
+  note?: string;
 }
 
-export const recurringPrograms = [
+export interface Program {
+  id: string;
+  title: string;
+  description: string;
+  cadence: string;
+  category: EventCategory;
+}
+
+export interface PastTerm {
+  term: string;
+  highlights: string[];
+}
+
+export const categoryLabel: Record<EventCategory, string> = {
+  meeting: "Meeting",
+  speaker: "Speaker",
+  social: "Social",
+  professional: "Professional",
+  competition: "Competition",
+  outreach: "Outreach",
+};
+
+/* ------------------------------------------------------------------ */
+/*  Recurring programs — "what we run"                                */
+/* ------------------------------------------------------------------ */
+export const programs: Program[] = [
   {
     id: "ditl",
     title: "Day in the Life Speaker Series",
     description:
-      "Biweekly 30-minute virtual sessions where industry professionals share what a typical day in their role looks like, what they love about being a woman in STEM, and advice for young women entering the tech industry.",
-    frequency: "Biweekly",
-    format: "Virtual, 30 minutes",
-    image: "/images/events/speaker-series.jpg",
-    category: "speaker" as const,
-  },
-  {
-    id: "resume-roast",
-    title: "Resume Roast Night",
-    description:
-      "Get honest, constructive feedback on your resume from HR professionals and industry experts in a fun, supportive environment. Walk away with actionable improvements.",
-    frequency: "Semester",
-    format: "In-person",
-    image: "/images/events/resume-roast.jpg",
-    category: "professional" as const,
-  },
-  {
-    id: "coffee-chat",
-    title: "Coffee & Chat",
-    description:
-      "Casual networking event featuring a coffee bar and conversation starters. Grab a coffee, pick a chit from the bowl, and spark meaningful connections with fellow members.",
-    frequency: "Monthly",
-    format: "In-person",
-    image: "/images/events/coffee-chat.jpg",
-    category: "social" as const,
+      "A biweekly 30-minute virtual session where a guest speaker walks through a typical day in her role, what she loves about being a woman in tech, and her advice for students entering the industry.",
+    cadence: "Biweekly · virtual",
+    category: "speaker",
   },
   {
     id: "women-in-tech-panel",
     title: "Women in Tech Panel",
     description:
-      "A flagship panel discussion bringing together accomplished women in technology to share their experiences, challenges, and triumphs in the industry.",
-    frequency: "Annual (November)",
-    format: "In-person",
-    image: "/images/events/panel.jpg",
-    category: "professional" as const,
+      "Our flagship panel bringing together accomplished women in technology from partners like Amway, Liberty Mutual, and Eli Lilly to share their experiences and answer questions.",
+    cadence: "Once a semester",
+    category: "professional",
+  },
+  {
+    id: "coffee-chat",
+    title: "Coffee & Chat",
+    description:
+      "A casual networking hour with a coffee bar and conversation prompts — an easy first event if you're new to CSWN.",
+    cadence: "Monthly",
+    category: "social",
+  },
+  {
+    id: "career-workshops",
+    title: "Career Workshops",
+    description:
+      "Hands-on sessions on resumes, LinkedIn, personal websites, and career-fair prep, often run with HR professionals and industry partners.",
+    cadence: "Several per semester",
+    category: "professional",
   },
   {
     id: "ai-build-challenge",
     title: "AI Build Challenge",
     description:
-      "A hands-on competition where teams build innovative AI-powered projects. Develop technical skills, collaborate with peers, and showcase your creativity.",
-    frequency: "Annual",
-    format: "In-person",
-    image: "/images/events/ai-challenge.jpg",
-    category: "competition" as const,
+      "A team competition to design and build an AI-powered project in a day — collaborate with peers and ship something real.",
+    cadence: "Annual",
+    category: "competition",
   },
   {
-    id: "bug-hunt",
-    title: "Bug Hunt Competition",
+    id: "socials",
+    title: "Community Socials",
     description:
-      "Put your debugging skills to the test in this exciting competition. Find and fix bugs in real code challenges while racing against the clock.",
-    frequency: "Annual",
-    format: "In-person",
-    image: "/images/events/bug-hunt.jpg",
-    category: "competition" as const,
-  },
-  {
-    id: "tote-bag-painting",
-    title: "Tote Bag Painting",
-    description:
-      "Express your creativity while bonding with fellow members. Design and paint custom tote bags in a relaxed, artistic setting.",
-    frequency: "Annual",
-    format: "In-person",
-    image: "/images/events/tote-bag.jpg",
-    category: "social" as const,
-  },
-  {
-    id: "tree-decorating",
-    title: "Holiday Ornament Making & Tree Decorating",
-    description:
-      "Celebrate the holiday season by crafting ornaments and decorating the ET corner tree together. A festive way to close out the semester.",
-    frequency: "Annual (December)",
-    format: "In-person, ET Corner",
-    image: "/images/events/tree-decorating.jpg",
-    category: "social" as const,
-  },
-  {
-    id: "tech-company-visit",
-    title: "Tech Company Visits",
-    description:
-      "Exclusive behind-the-scenes visits to leading technology companies. See how professionals work, tour offices, and network with engineers and leaders.",
-    frequency: "Semester",
-    format: "Off-campus",
-    image: "/images/events/company-visit.jpg",
-    category: "professional" as const,
-  },
-  {
-    id: "tech-fashion-show",
-    title: "Tech Meets Fashion Show",
-    description:
-      "A creative collaboration with the music club showcasing the intersection of technology and fashion at the IU Auditorium.",
-    frequency: "Annual",
-    format: "IU Auditorium",
-    image: "/images/events/fashion-show.jpg",
-    category: "social" as const,
+      "Paint & boba, sticker making, pumpkin carving, tote-bag painting, tree decorating, and more — low-key events to meet other members.",
+    cadence: "Throughout the year",
+    category: "social",
   },
 ];
 
-export const eventCalendar: CSWNEvent[] = [
-  // Fall 2024
-  {
-    id: "b-involved-fall",
-    title: "B-Involved Fair",
-    date: "August 27",
-    description: "Meet CSWN at the university involvement fair alongside sticker decorating. Learn about membership, upcoming events, and how to get involved.",
-    category: "outreach",
-    location: "Campus Center",
-    time: "3:00–6:00 PM",
-  },
-  {
-    id: "callout-sep",
-    title: "Callout Event",
-    date: "September 4",
-    description: "Food, introductions to officers, and a first look at the semester's events. The perfect way to get to know CSWN.",
-    category: "meeting",
-    time: "6:00–8:00 PM",
-  },
-  {
-    id: "paint-boba",
-    title: "Paint and Boba Social",
-    date: "September 23",
-    description: "A relaxed social event featuring painting and boba — a great way to meet fellow members and unwind.",
-    category: "social",
-    time: "6:00–8:00 PM",
-  },
-  {
-    id: "career-roadmap",
-    title: "Career Roadmap with CS Club",
-    date: "October 7",
-    description: "A collaborative event with the CS Club exploring career pathways in tech — from internships to full-time roles.",
-    category: "professional",
-    time: "6:00–8:00 PM",
-  },
-  {
-    id: "halloween-social",
-    title: "Halloween Social",
-    date: "October 28",
-    description: "Hallway decorating competition between College of Science and College of Engineering, plus Halloween festivities.",
-    category: "social",
-    time: "6:00–8:00 PM",
-  },
-  {
-    id: "women-in-tech-panel-fall",
-    title: "Women in Tech Panel",
-    date: "November 11",
-    description: "Our flagship panel bringing together accomplished women in technology to share their experiences and advice.",
-    category: "professional",
-    time: "3:30–5:30 PM",
-  },
-  {
-    id: "thanksgiving-social",
-    title: "Thanksgiving Social with CS Club",
-    date: "November 18",
-    description: "Collaborative event with the CS Club — pie your favorite officer, enjoy fall snacks and drinks.",
-    category: "social",
-    time: "6:00–8:00 PM",
-  },
-  {
-    id: "dead-week-breakfast",
-    title: "Breakfast at Midnight with CS Club",
-    date: "December 9",
-    description: "Dead week survival event: warm breakfast foods at midnight to fuel finals studying alongside fellow classmates.",
-    category: "social",
-    time: "12:00–2:00 AM",
-  },
+/* ------------------------------------------------------------------ */
+/*  This semester. TODO: update dates/speakers each term.             */
+/* ------------------------------------------------------------------ */
+export const upcomingEvents: UpcomingEvent[] = [
+  { id: "b-involved", month: "AUG", day: "26", title: "B-Involved Fair", category: "outreach", note: "Find our table + sticker decorating" },
+  { id: "callout", month: "AUG", day: "28", title: "Callout Event", category: "meeting", note: "Food, meet the officers, semester preview" },
+  { id: "ditl-cano", month: "SEP", day: "1", title: "Day in the Life: Amanda Cano", category: "speaker" },
+  { id: "coffee-chat-sep", month: "SEP", day: "10", title: "Coffee & Chat", category: "social" },
+  { id: "ditl-bag", month: "SEP", day: "16", title: "Day in the Life: Anushree Bag", category: "speaker" },
+  { id: "ai-build", month: "SEP", day: "25", title: "AI Build Challenge", category: "competition" },
+  { id: "ditl-sep", month: "SEP", day: "28", title: "Day in the Life", category: "speaker" },
+  { id: "movie-night", month: "OCT", day: "7", title: "Movie Night", category: "social", note: "With PSUB" },
+  { id: "ditl-lm", month: "OCT", day: "15", title: "Day in the Life: Liberty Mutual", category: "speaker" },
+  { id: "panel", month: "OCT", day: "23", title: "Women in Tech Panel", category: "professional", note: "Amanda Cano · Anushree Bag · Rupal Thanawala · Tori Clifford" },
+  { id: "tote-boba", month: "NOV", day: "12", title: "Tote Bag Painting + Boba", category: "social" },
+  { id: "ditl-clifford", month: "NOV", day: "16", title: "Day in the Life: Tori Clifford", category: "speaker" },
+  { id: "tree", month: "DEC", day: "2", title: "Tree Decorating", category: "social" },
+];
 
-  // Spring 2025
+/* ------------------------------------------------------------------ */
+/*  Past terms — condensed highlights                                 */
+/* ------------------------------------------------------------------ */
+export const pastTerms: PastTerm[] = [
   {
-    id: "sticker-hot-choc",
-    title: "Make Your Own Sticker & Hot Chocolate",
-    date: "January 27",
-    description: "Kick off the spring semester with sticker-making and hot chocolate. A cozy, creative social to start the year.",
-    category: "social",
-    location: "SL 239",
-    time: "12:30–2:30 PM",
+    term: "Fall 2025",
+    highlights: [
+      "Women in Tech Panel",
+      "LinkedIn & resume workshop",
+      "Career goal roadmap",
+      "Personal website workshop",
+      "Paint & sip (boba)",
+      "Pumpkin carving",
+      "Glow stick party",
+      "Shark Tank: 30-minute startup",
+      "Breakfast at Midnight",
+    ],
   },
   {
-    id: "bouquet-cs-club",
-    title: "Make Your Own Bouquet with CS Club",
-    date: "February 13",
-    description: "A Valentine's Day collaboration with the CS Club — make your own flower bouquet.",
-    category: "social",
-    location: "SL 112",
-    time: "12:30–2:00 PM",
+    term: "Spring 2025",
+    highlights: [
+      "Make your own sticker & hot chocolate",
+      "Bouquet making with CS Club",
+      "Beyond the Code with Prof. Smart",
+      "Chai-deas hackathon ideation",
+      "Career-fair prep with Amway",
+      "Eli Lilly headquarters tour",
+    ],
   },
   {
-    id: "beyond-the-code",
-    title: "Beyond the Code — with Prof. Smart",
-    date: "February 27",
-    description: "How privacy, ethics, and human behavior intersect with CS — and career paths beyond traditional big tech, including academia, research, and teaching-focused faculty roles.",
-    category: "professional",
-    location: "ET 202",
-    time: "5:00–6:30 PM",
-  },
-  {
-    id: "chai-deas",
-    title: "Chai-deas Social",
-    date: "March 10",
-    description: "Project ideation for the CS Club hackathon over chai and samosas. Bring your ideas and your appetite.",
-    category: "social",
-    time: "5:00–6:30 PM",
-  },
-  {
-    id: "women-in-tech-panel-spring",
-    title: "Women in Tech Panel",
-    date: "April 15",
-    description: "Our spring Women in Tech Panel featuring professionals from Amway, Liberty Mutual, Eli Lilly, and more.",
-    category: "professional",
-    location: "ET 202 / Campus Center",
-    time: "4:00–6:00 PM",
+    term: "Fall 2024",
+    highlights: [
+      "Callout & B-Involved Fair",
+      "Paint and boba social",
+      "Career roadmap with CS Club",
+      "Halloween lab crawl",
+      "Women in Tech Panel",
+      "Thanksgiving social: pie an officer",
+      "Breakfast at Midnight",
+    ],
   },
 ];
