@@ -3,157 +3,139 @@ import { recurringPrograms, eventCalendar } from "@/data/events";
 import Link from "next/link";
 
 const categoryColors: Record<string, string> = {
-  meeting: "text-blue-400 bg-blue-400/10",
-  speaker: "text-purple-400 bg-purple-400/10",
-  social: "text-pink-400 bg-pink-400/10",
-  professional: "text-green-400 bg-green-400/10",
-  competition: "text-orange-400 bg-orange-400/10",
-  outreach: "text-teal-400 bg-teal-400/10",
+  meeting: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
+  speaker: "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
+  social: "bg-pink-100 text-pink-700 dark:bg-pink-900/40 dark:text-pink-300",
+  professional: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
+  competition: "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300",
+  outreach: "bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300",
 };
-
-const pastEventHighlights = [
-  {
-    id: "halloween-crawl",
-    title: "Halloween Crawl '25",
-    description: "Hallway decorating competition between CoS and CoE, plus Halloween festivities across campus.",
-    category: "social",
-    image: null,
-  },
-  {
-    id: "pie-an-officer",
-    title: "Pie an Officer",
-    description: "Members raised money and pied their favorite officers. A fan-favorite semester tradition.",
-    category: "social",
-    image: null,
-  },
-  {
-    id: "breakfast-midnight",
-    title: "Breakfast at Midnight",
-    description: "Dead week survival with warm breakfast foods at midnight alongside CS Club members.",
-    category: "social",
-    image: null,
-  },
-  {
-    id: "beyond-the-code",
-    title: "Beyond the Code",
-    description: "Prof. Smart talked CS careers beyond big tech — academia, research, ethics, and teaching.",
-    category: "professional",
-    image: null,
-  },
-  {
-    id: "women-tech-panel",
-    title: "Women in Tech Panel",
-    description: "Professionals from Amway, Liberty Mutual, Eli Lilly, and more shared their paths into tech.",
-    category: "professional",
-    image: null,
-  },
-  {
-    id: "b-involved-fair",
-    title: "B-Involved Fair",
-    description: "CSWN's booth at the university involvement fair — stickers, info tables, and new members.",
-    category: "outreach",
-    image: null,
-  },
-];
-
-const collaborations = [
-  { name: "CS Club", type: "Student Org" },
-  { name: "CS CIEE", type: "Student Org" },
-  { name: "Eli Lilly", type: "Industry" },
-  { name: "Amway", type: "Industry" },
-  { name: "Liberty Mutual", type: "Industry" },
-  { name: "Brooksource", type: "Industry" },
-  { name: "Purdue CS Dept.", type: "Academic" },
-  { name: "Purdue Faculty", type: "Academic" },
-];
-
-const upcomingEvents = eventCalendar.filter((e) => !e.isPast);
 
 export default function EventsPage() {
   return (
     <>
       <PageHero
         title="Events"
-        subtitle="From speaker series to social nights — CSWN runs diverse programming every semester."
+        subtitle="From speaker series to hackathons, CSWN offers diverse programming to support your professional and personal growth."
         badge="Programming"
       />
 
       {/* Recurring Programs */}
-      <section className="py-20 bg-bg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Recurring</p>
-            <h2 className="text-2xl font-bold text-text">Our programs</h2>
+      <section className="py-20 section-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-text dark:text-text-dark mb-4">Our Programs</h2>
+            <p className="text-text-light dark:text-text-dark-light max-w-2xl mx-auto">
+              CSWN runs a diverse set of recurring programs throughout the academic year.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recurringPrograms.map((program) => (
               <div
                 key={program.id}
-                className="bg-bg-card border border-border rounded-xl p-6 hover:border-primary/40 transition-colors group"
+                className="glass-card rounded-xl overflow-hidden hover-lift group"
               >
-                <div className="flex items-center gap-2 mb-3">
-                  <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[program.category]}`}>
-                    {program.category}
-                  </span>
-                  <span className="text-xs text-text-lighter">{program.frequency}</span>
+                <div className="aspect-[16/9] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 dark:from-primary/20 dark:via-secondary/20 dark:to-accent/20 flex items-center justify-center">
+                  <span className="text-text-lighter dark:text-text-dark-light text-xs">Event Photo</span>
                 </div>
-                <h3 className="font-semibold text-text mb-2 group-hover:text-primary transition-colors">
-                  {program.title}
-                </h3>
-                <p className="text-sm text-text-light leading-relaxed line-clamp-3">
-                  {program.description}
-                </p>
-                {program.format && (
-                  <p className="text-xs text-text-lighter mt-3">📍 {program.format}</p>
-                )}
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[program.category]}`}>
+                      {program.category}
+                    </span>
+                    <span className="text-xs text-text-lighter dark:text-text-dark-light">{program.frequency}</span>
+                  </div>
+                  <h3 className="font-semibold text-text dark:text-text-dark mb-2 group-hover:text-primary transition-colors">
+                    {program.title}
+                  </h3>
+                  <p className="text-sm text-text-light dark:text-text-dark-light leading-relaxed line-clamp-3">
+                    {program.description}
+                  </p>
+                  {program.format && (
+                    <p className="text-xs text-text-lighter dark:text-text-dark-light mt-3">
+                      📍 {program.format}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Past Event Highlights */}
-      <section className="py-20 bg-bg-alt border-y border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Past Events</p>
-            <h2 className="text-2xl font-bold text-text">Highlights</h2>
-            <p className="text-text-light text-sm mt-2">A look back at some of our favorite moments.</p>
+      {/* Event Calendar */}
+      <section className="py-20 section-alt">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-text dark:text-text-dark mb-4">Event Calendar</h2>
+            <p className="text-text-light dark:text-text-dark-light max-w-2xl mx-auto">
+              Stay up to date with all upcoming CSWN events and activities.
+            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {pastEventHighlights.map((event) => (
-              <div
-                key={event.id}
-                className="bg-bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-colors group"
-              >
-                {/* Photo placeholder — swap src when photos are available */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 flex items-center justify-center">
-                  <span className="text-text-lighter text-xs">📷 Photo coming soon</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[event.category]}`}>
-                      {event.category}
-                    </span>
+          <div className="max-w-3xl mx-auto">
+            <div className="space-y-3">
+              {eventCalendar.map((event) => (
+                <div
+                  key={event.id}
+                  className="glass-card p-5 rounded-xl hover-lift flex items-start gap-4"
+                >
+                  <div className="flex-shrink-0 w-16 text-center">
+                    <p className="text-xs text-text-lighter dark:text-text-dark-light font-medium uppercase">
+                      {event.date.split(" ")[0]}
+                    </p>
+                    <p className="text-2xl font-bold text-primary">
+                      {event.date.split(" ")[1]}
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-text text-sm mb-1 group-hover:text-primary transition-colors">
-                    {event.title}
-                  </h3>
-                  <p className="text-xs text-text-light leading-relaxed">{event.description}</p>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-semibold text-text dark:text-text-dark text-sm">{event.title}</h3>
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[event.category]}`}>
+                        {event.category}
+                      </span>
+                    </div>
+                    <p className="text-sm text-text-light dark:text-text-dark-light">{event.description}</p>
+                    {event.location && (
+                      <p className="text-xs text-text-lighter dark:text-text-dark-light mt-1">📍 {event.location}</p>
+                    )}
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Event Gallery Preview */}
+      <section className="py-20 section-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-text dark:text-text-dark mb-4">Event Highlights</h2>
+            <p className="text-text-light dark:text-text-dark-light max-w-2xl mx-auto">
+              Moments captured from past CSWN events.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <div
+                key={i}
+                className="aspect-square bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 dark:from-primary/20 dark:via-secondary/20 dark:to-accent/20 rounded-xl flex items-center justify-center hover-lift border border-white/50 dark:border-white/10"
+              >
+                <span className="text-text-lighter dark:text-text-dark-light text-xs">Photo {i}</span>
               </div>
             ))}
           </div>
 
-          <div className="mt-8">
+          <div className="text-center mt-10">
             <Link
-              href="/gallery"
-              className="inline-flex items-center gap-2 text-sm text-text-light hover:text-primary transition-colors"
+              href="/portal"
+              className="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors group"
             >
-              See full gallery
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              View Full Gallery
+              <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -161,86 +143,30 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Event Calendar */}
-      <section className="py-20 bg-bg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Schedule</p>
-            <h2 className="text-2xl font-bold text-text">Event calendar</h2>
-          </div>
-
-          <div className="max-w-3xl space-y-2">
-            {upcomingEvents.length > 0 ? (
-              upcomingEvents.map((event) => (
-                <div
-                  key={event.id}
-                  className="bg-bg-card border border-border rounded-xl p-5 hover:border-primary/40 transition-colors flex items-start gap-5"
-                >
-                  <div className="flex-shrink-0 w-14 text-center">
-                    <p className="text-xs text-text-lighter font-medium uppercase">
-                      {event.date.split(" ")[0]}
-                    </p>
-                    <p className="text-2xl font-bold text-primary leading-tight">
-                      {event.date.split(" ")[1]}
-                    </p>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <h3 className="font-semibold text-text text-sm">{event.title}</h3>
-                      <span className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[event.category]}`}>
-                        {event.category}
-                      </span>
-                    </div>
-                    <p className="text-sm text-text-light">{event.description}</p>
-                    {event.location && (
-                      <p className="text-xs text-text-lighter mt-1">📍 {event.location}</p>
-                    )}
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="bg-bg-card border border-border rounded-xl p-8 text-center">
-                <p className="text-text-light text-sm">Upcoming events will be posted here. Follow us on Instagram for the latest.</p>
-                <a
-                  href="https://www.instagram.com/cswn.indy/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-4 text-sm text-primary hover:text-primary-dark transition-colors font-medium"
-                >
-                  @cswn.indy ↗
-                </a>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Collaborations */}
-      <section className="py-16 bg-bg-alt border-t border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Collaborations</p>
-            <h2 className="text-2xl font-bold text-text">Who we&apos;ve worked with</h2>
-            <p className="text-text-light text-sm mt-2">
-              We&apos;ve partnered with companies, student orgs, and academic departments to bring our members bigger and better experiences.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            {collaborations.map((collab) => (
-              <div key={collab.name} className="flex items-center gap-2 px-4 py-2 bg-bg-card border border-border rounded-lg hover:border-primary/30 transition-colors">
-                <span className="text-sm font-medium text-text">{collab.name}</span>
-                <span className="text-xs text-text-lighter">{collab.type}</span>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-xs text-text-lighter mt-6">
-            Interested in collaborating?{" "}
-            <Link href="/contact" className="text-primary hover:text-primary-dark transition-colors">
-              Get in touch →
-            </Link>
+      {/* CTA */}
+      <section className="py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 dark:from-primary/5 dark:via-secondary/5 dark:to-accent/5" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-text dark:text-text-dark mb-4">Don&apos;t Miss Out</h2>
+          <p className="text-text-light dark:text-text-dark-light mb-6">
+            Follow us on social media and join CSWN to stay updated on all upcoming events.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/portal"
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all shadow-lg shadow-primary/25 hover:-translate-y-0.5"
+            >
+              Join CSWN
+            </Link>
+            <a
+              href="https://www.instagram.com/cswn.indy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 glass-card text-text dark:text-text-dark font-semibold rounded-xl hover:bg-white/80 dark:hover:bg-white/10 transition-all hover:-translate-y-0.5"
+            >
+              Follow on Instagram
+            </a>
+          </div>
         </div>
       </section>
     </>

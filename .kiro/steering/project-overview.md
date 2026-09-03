@@ -1,51 +1,29 @@
-# CSWN Website — Project Overview
+# CSWN Website - Project Overview
 
-## What This Is
+## About
 
-The official website for the **Computer Science Women's Network (CSWN)** at Purdue University Indianapolis. It is a Next.js 16 / React 19 static-content site styled with Tailwind CSS v4.
+This is the official website for the Computer Science Women's Network (CSWN) at Purdue University Indianapolis. It's a student organization site focused on empowering women and allies in computing through community, events, mentorship, and professional development.
 
 ## Tech Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 16.2.9 (App Router) |
-| UI Library | React 19.2.4 |
-| Styling | Tailwind CSS v4 via `@tailwindcss/postcss` |
-| Language | TypeScript 5 (strict mode) |
-| Fonts | Inter via `next/font/google` |
-| Linting | ESLint 9 with `eslint-config-next` |
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript (strict mode)
+- **Styling:** Tailwind CSS v4 with `@theme` custom tokens
+- **Font:** Inter (via next/font/google)
+- **Linting:** ESLint 9 with next/core-web-vitals and next/typescript configs
+- **Node target:** ES2017
 
-> **Important:** This project uses **Next.js 16** and **React 19** — both are beyond common training data. Read `node_modules/next/dist/docs/` before writing framework-specific code. Do not assume Next.js 13/14/15 APIs apply here.
+## Commands
+
+- `npm run dev` — Start dev server (localhost:3000)
+- `npm run build` — Production build
+- `npm run start` — Serve production build
+- `npm run lint` — Run ESLint
 
 ## Path Aliases
 
-`@/*` maps to `./src/*` (configured in `tsconfig.json`).
+- `@/*` maps to `./src/*`
 
-## Scripts
+## Important
 
-```
-npm run dev      # start dev server
-npm run build    # production build
-npm run start    # start production server
-npm run lint     # run ESLint
-```
-
-## Repository Structure
-
-```
-src/
-  app/           # Next.js App Router pages + layouts
-  components/    # Shared UI components
-  data/          # Static TypeScript data files (the "database")
-public/          # Static assets (SVGs)
-```
-
-## Organization Context
-
-- **CSWN** = Computer Science Women's Network
-- Purdue University Indianapolis campus
-- 150+ members, 40+ events/year, 14 industry speakers, 5+ corporate partners
-- Contact email: `cswn@purdue.edu`
-- Instagram: `https://www.instagram.com/cswn.indy/`
-- LinkedIn: `https://www.linkedin.com/company/105267243/`
-- BoilerLink: `https://boilerlink.purdue.edu/organization/computersciencewomensnetworkindy`
+This project uses **Next.js 16** which has breaking changes from earlier versions. Before writing any Next.js-specific code, consult `node_modules/next/dist/docs/` for current API conventions.

@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "CSWN | Computer Science Women's Network - Purdue Indianapolis",
   description:
-    "Empowering women in CS and tech at Purdue University Indianapolis through mentorship, workshops, speaker series, and community since 2024.",
+    "Empowering women and allies in computing through professional development, technical growth, mentorship, leadership, networking, outreach, and community at Purdue University in Indianapolis.",
   keywords: [
     "CSWN",
     "Computer Science Women's Network",
@@ -28,7 +28,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "CSWN | Computer Science Women's Network",
-    description: "Where Women in Tech Find Their Network — CSWN at Purdue University Indianapolis",
+    description:
+      "Empowering Women in Technology Through Community, Leadership, and Opportunity",
     type: "website",
     locale: "en_US",
   },
@@ -40,11 +41,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="antialiased">
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="antialiased bg-bg dark:bg-bg-dark text-text dark:text-text-dark transition-colors duration-300">
         <Navigation />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <div className="md:pl-[72px] pt-14 md:pt-0">
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

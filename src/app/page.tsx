@@ -1,201 +1,215 @@
 import Link from "next/link";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import FlowerGarden from "@/components/FlowerGarden";
 
-const impactStats = [
-  { label: "Members", value: "100+" },
-  { label: "Events/Semester", value: "15+" },
-  { label: "Industry Partners", value: "6" },
-  { label: "Founded", value: "2024" },
-];
-
-const highlights = [
-  {
-    title: "Day in the Life Speaker Series",
-    description: "Biweekly virtual sessions with women in tech — real roles, real stories.",
-    category: "Speaker Series",
-    href: "/day-in-the-life",
-  },
-  {
-    title: "Workshops & Competitions",
-    description: "Hands-on events like resume roasts, hackathons, and AI build challenges.",
-    category: "Professional Dev",
-    href: "/events",
-  },
-  {
-    title: "Networking & Community",
-    description: "Coffee chats, company visits, panels, and social events that build real connections.",
-    category: "Community",
-    href: "/events",
-  },
-  {
-    title: "Women in Tech Panel",
-    description: "Our annual flagship panel with accomplished women in tech sharing their paths and advice.",
-    category: "Panel",
-    href: "/events",
-  },
-  {
-    title: "Company Collaborations",
-    description: "We partner with student orgs and industry — from CS Club colabs to Eli Lilly company tours.",
-    category: "Industry",
-    href: "/events",
-  },
-  {
-    title: "Leadership Opportunities",
-    description: "Exec board and committee roles to build real leadership experience on campus.",
-    category: "Leadership",
-    href: "/contact",
-  },
-];
+const DISCORD_LINK = "https://discord.gg/XWEfRD3ZYU";
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-[100px] pointer-events-none" />
+      {/* Hero Section */}
+      <section className="relative min-h-[55vh] flex items-center overflow-hidden">
+        {/* Light mode background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-200/60 via-white to-pink-200/50 dark:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-tl from-rose-100/40 via-transparent to-blue-100/50 dark:hidden" />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16">
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-text leading-[1.05] tracking-tight mb-6">
-            Where Women in Tech{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
-              Find Their Network
+        {/* Dark mode background */}
+        <div className="absolute inset-0 hidden dark:block bg-gradient-to-br from-[#06101f] via-[#0a0e1a] to-[#140a1e]" />
+        <div className="absolute inset-0 hidden dark:block bg-gradient-to-tl from-blue-900/20 via-transparent to-purple-900/20" />
+
+        {/* Radial glow blobs */}
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-sky-300/15 dark:bg-primary/20 rounded-full blur-[100px] animate-pulse-glow" />
+        <div className="absolute bottom-[10%] left-[10%] w-[400px] h-[400px] bg-pink-300/15 dark:bg-secondary/15 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-[40%] right-[5%] w-[350px] h-[350px] bg-violet-200/12 dark:bg-accent/15 rounded-full blur-[80px] animate-pulse-glow" style={{ animationDelay: "3s" }} />
+
+        {/* Geometric accents */}
+        <div className="absolute top-[22%] left-[12%] w-16 h-16 border border-primary/15 dark:border-primary/25 rounded-2xl rotate-12 animate-float-slow hidden lg:block" />
+        <div className="absolute bottom-[28%] right-[10%] w-12 h-12 border border-secondary/15 dark:border-secondary/25 rounded-full animate-float hidden lg:block" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-[55%] left-[6%] w-10 h-10 border border-accent/12 dark:border-accent/20 rounded-xl -rotate-12 animate-float hidden lg:block" style={{ animationDelay: "2s" }} />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+          <div className="text-center max-w-5xl mx-auto animate-fade-in-up">
+            <span className="inline-flex items-center gap-2 px-5 py-2 bg-white/70 dark:bg-white/5 backdrop-blur-sm text-primary text-sm font-medium rounded-full mb-6 border border-primary/20 dark:border-primary/30 shadow-sm">
+              <img src="/Purdue.png" alt="Purdue" className="w-5 h-5 object-contain" />
+              Purdue University in Indianapolis
             </span>
-          </h1>
 
-          <p className="text-lg sm:text-xl text-text-light max-w-2xl mx-auto mb-10 leading-relaxed">
-            Computer Science Women&apos;s Network — building community, confidence, and careers for women in tech at Purdue Indianapolis.
-          </p>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.05] mb-6 tracking-tight">
+              <span className="block bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                Computer Science
+              </span>
+              <span className="block mt-1 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent dark:drop-shadow-[0_0_30px_rgba(124,198,254,0.3)]">
+                Women&apos;s Network
+              </span>
+            </h1>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="px-8 py-3.5 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm"
-            >
-              Get in Touch
-            </Link>
-            <a
-              href="https://discord.gg/PLACEHOLDER"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3.5 border border-border text-text-light font-medium rounded-lg hover:border-primary/50 hover:text-text transition-colors text-sm flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z" />
-              </svg>
-              Join Discord
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="border-y border-border bg-bg-alt">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {impactStats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary mb-1">{stat.value}</p>
-                <p className="text-sm text-text-light">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What We Do */}
-      <section className="py-24 bg-bg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <p className="text-primary text-sm font-medium tracking-wider uppercase mb-3">Programming</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-text">Something for everyone</h2>
-            <p className="text-text-light mt-3 max-w-xl text-sm leading-relaxed">
-              From technical skill-building to social events and industry connections — CSWN runs diverse programming every semester.
+            <p className="text-lg md:text-xl text-text-light dark:text-text-dark-light leading-relaxed mb-8 max-w-2xl mx-auto">
+              Empowering women to shape the future of tech through professional development,
+              mentorship, and community.
             </p>
-          </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {highlights.map((p) => (
-              <Link
-                key={p.title}
-                href={p.href}
-                className="p-6 rounded-xl bg-bg-card border border-border hover:border-primary/40 transition-colors group block"
-              >
-                <span className="text-xs font-medium text-primary/80 tracking-wide uppercase">
-                  {p.category}
-                </span>
-                <h3 className="mt-2 mb-2 font-semibold text-text group-hover:text-primary transition-colors">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-text-light leading-relaxed">{p.description}</p>
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-8">
-            <Link
-              href="/events"
-              className="inline-flex items-center gap-2 text-sm text-text-light hover:text-primary transition-colors"
-            >
-              See all events
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-bg-alt border-y border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl font-bold text-text mb-4">
-              Ready to get involved?
-            </h2>
-            <p className="text-text-light mb-8 leading-relaxed text-sm">
-              Whether you&apos;re a freshman or a senior, CSWN has something for you — from resume
-              help to industry connections to a community that actually gets it.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-7 py-3 bg-primary text-bg font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm"
-              >
-                Get in Touch
-              </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://discord.gg/PLACEHOLDER"
+                href={DISCORD_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3 border border-border text-text-light font-medium rounded-lg hover:border-primary/50 hover:text-text transition-colors text-sm"
+                className="group inline-flex items-center justify-center px-9 py-4 bg-primary text-white font-semibold rounded-2xl hover:bg-primary-dark transition-all duration-300 shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 active:translate-y-0"
               >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z" />
+                Join Us
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-                Join Discord
               </a>
+              <Link
+                href="/events"
+                className="inline-flex items-center justify-center px-9 py-4 bg-white/70 dark:bg-white/5 backdrop-blur-sm border-2 border-primary/20 dark:border-primary/30 text-primary font-semibold rounded-2xl hover:bg-primary/5 dark:hover:bg-primary/10 transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
+              >
+                View Events
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Partner with CSWN segue */}
-      <section className="py-16 bg-bg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <p className="text-xs text-text-lighter uppercase tracking-widest mb-2">Industry</p>
-              <h2 className="text-xl font-bold text-text mb-1">Partner with CSWN</h2>
-              <p className="text-sm text-text-light max-w-lg">
-                We work with companies for sponsorships, company visits, speaker slots, and recruitment events. Reach 100+ motivated CS students.
-              </p>
+      {/* Impact Stats */}
+      <section className="relative py-8 overflow-hidden -mt-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/60 via-white to-white dark:from-[#0a1020] dark:via-[#0c1225] dark:to-[#0a0f1e]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/4 via-transparent to-secondary/4 dark:from-primary/6 dark:to-secondary/6" />
+
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="glass-card rounded-3xl p-8 md:p-12 shadow-2xl shadow-primary/10 dark:shadow-primary/20 border border-primary/15 dark:border-primary/20">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+              <AnimatedCounter end={75} suffix="+" label="Members" />
+              <AnimatedCounter end={50} suffix="+" label="Events Hosted" />
+              <AnimatedCounter end={5} suffix="+" label="Industry Partners" />
+              <AnimatedCounter end={10} suffix="+" label="Guest Speakers" />
             </div>
-            <Link
-              href="/sponsors"
-              className="flex-shrink-0 inline-flex items-center justify-center px-6 py-2.5 border border-border text-text-light font-medium rounded-lg hover:border-primary/50 hover:text-text transition-colors text-sm whitespace-nowrap"
-            >
-              View Sponsorship Info →
-            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Mission */}
+      <section className="relative py-14 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-rose-50/50 via-white to-sky-50/50 dark:from-purple-950/20 dark:via-[#0a0f1e] dark:to-blue-950/20" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-secondary/8 dark:bg-secondary/10 rounded-full blur-[100px]" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Mission header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 mb-5">
+              <div className="h-[2px] w-8 bg-gradient-to-r from-transparent to-primary rounded-full" />
+              <span className="px-5 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 text-primary text-sm font-bold rounded-full uppercase tracking-widest border border-primary/20 dark:border-primary/30">
+                Our Mission
+              </span>
+              <div className="h-[2px] w-8 bg-gradient-to-l from-transparent to-secondary rounded-full" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                Building Community, Breaking Barriers
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="glass-card rounded-3xl p-8 md:p-10 shadow-lg shadow-primary/5 dark:shadow-primary/10 border border-white/60 dark:border-white/10">
+              <p className="text-lg text-text-light dark:text-text-dark-light leading-relaxed mb-5">
+                The Computer Science Women&apos;s Network (CSWN) at Purdue University in
+                Indianapolis is dedicated to empowering women and allies in computing through
+                professional development, technical growth, mentorship, leadership opportunities,
+                networking, outreach, and community.
+              </p>
+              <p className="text-lg text-text-light dark:text-text-dark-light leading-relaxed mb-6">
+                Whether you&apos;re a first-year student or a senior, CSWN provides the resources,
+                connections, and support system to accelerate your career in technology.
+              </p>
+              <Link
+                href="/members"
+                className="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors group"
+              >
+                Meet Our Team
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { label: "Growth", desc: "Develop your skills", image: "/mission-growth.jpeg" },
+                { label: "Innovation", desc: "Push boundaries", image: "/mission-innovation.jpeg" },
+                { label: "Connection", desc: "Build your network", image: "/mission-connection.jpeg" },
+                { label: "Opportunity", desc: "Launch your career", image: "/mission-opportunity.jpeg" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="aspect-square rounded-2xl overflow-hidden relative hover-lift border border-white/40 dark:border-white/10 shadow-md group"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.label}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <p className="text-sm font-bold">{item.label}</p>
+                    <p className="text-xs opacity-80 mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Combined Garden + CTA Section */}
+      <section className="relative py-14 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-50/30 to-rose-50/40 dark:from-[#0a0f1e] dark:via-[#0a1510] dark:to-[#120a18]" />
+        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-pink-100/30 to-transparent dark:from-purple-950/15 dark:to-transparent" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-5 gap-8 items-center">
+            {/* CTA content */}
+            <div className="lg:col-span-2 order-2 lg:order-1">
+              <div className="glass-card rounded-3xl p-8 md:p-10 shadow-xl shadow-secondary/5 dark:shadow-secondary/10 border border-white/60 dark:border-white/10">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-text dark:text-white mb-4 tracking-tight">
+                  Watch Our Community{" "}
+                  <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                    Bloom
+                  </span>
+                </h2>
+                <p className="text-text-light dark:text-text-dark-light leading-relaxed mb-4">
+                  Every visitor plants a flower in our garden. Each bloom represents someone
+                  who found their way here — community, growth, and mentorship taking root.
+                </p>
+                <p className="text-sm text-text-lighter dark:text-text-dark-light mb-8 italic">
+                  Ready to grow with us?
+                </p>
+                <div className="flex flex-col gap-3">
+                  <a
+                    href={DISCORD_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center justify-center px-7 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
+                  >
+                    Join CSWN Today
+                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                  <Link
+                    href="/sponsors"
+                    className="inline-flex items-center justify-center px-7 py-3.5 bg-white/60 dark:bg-white/5 backdrop-blur-sm text-text dark:text-text-dark font-semibold rounded-xl border border-gray-200/60 dark:border-white/10 hover:border-primary/30 transition-all hover:-translate-y-0.5"
+                  >
+                    Partner With Us
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Garden */}
+            <div className="lg:col-span-3 order-1 lg:order-2">
+              <FlowerGarden />
+            </div>
           </div>
         </div>
       </section>
