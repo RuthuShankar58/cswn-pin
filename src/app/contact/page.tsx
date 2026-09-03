@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { SOCIALS, CONTACT_EMAIL } from "@/data/site";
 import { officers } from "@/data/team";
+import { PHOTOS } from "@/data/photos";
+
+const strip = [PHOTOS.fairOfficers, PHOTOS.socialFood, PHOTOS.talk];
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -104,6 +108,23 @@ export default function ContactPage() {
                     {o.email}
                   </a>
                 )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 grid grid-cols-3 gap-3 md:gap-4" data-reveal>
+            {strip.map((photo) => (
+              <div
+                key={photo.src}
+                className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-bg-card"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 768px) 30vw, 22vw"
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>

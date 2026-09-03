@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { partners } from "@/data/sponsors";
+import { PHOTOS } from "@/data/photos";
 
 export const metadata: Metadata = {
   title: "About",
@@ -13,20 +15,26 @@ const values = [
   {
     title: "Professional development",
     body: "Resume and LinkedIn workshops, mock interviews, personal-website sessions, and career-fair prep — often run with HR professionals and industry partners.",
+    photo: PHOTOS.careerTrip,
   },
   {
     title: "Technical growth",
     body: "The AI Build Challenge, hackathon ideation with the CS Club, and workshops that give members something concrete to build and show.",
+    photo: PHOTOS.webWorkshop,
   },
   {
     title: "Mentorship",
     body: "The Day in the Life speaker series connects members with women already working in tech who talk openly about their roles and paths.",
+    photo: PHOTOS.talk,
   },
   {
     title: "Community",
     body: "Socials, collaborations with other student orgs, and a Discord where members trade advice, referrals, and moral support during finals.",
+    photo: PHOTOS.paintBoba,
   },
 ];
+
+const missionPhotos = [PHOTOS.callout, PHOTOS.networking, PHOTOS.pieOfficer];
 
 export default function AboutPage() {
   return (
@@ -61,6 +69,23 @@ export default function AboutPage() {
                 here.
               </p>
             </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              {missionPhotos.map((photo) => (
+                <div
+                  key={photo.src}
+                  className="relative aspect-[3/4] overflow-hidden rounded-xl border border-border bg-bg-subtle"
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 768px) 30vw, 18vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           <aside className="card h-fit p-6" data-reveal style={{ "--reveal-delay": "100ms" } as React.CSSProperties}>
@@ -88,14 +113,25 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <div
                 key={v.title}
-                className="card card-hover p-6"
+                className="card card-hover overflow-hidden"
                 data-reveal
                 style={{ "--reveal-delay": `${i * 70}ms` } as React.CSSProperties}
               >
-                <h3 className="text-lg font-semibold">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                  {v.body}
-                </p>
+                <div className="relative h-44 border-b border-border bg-bg-subtle">
+                  <Image
+                    src={v.photo.src}
+                    alt={v.photo.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold">{v.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                    {v.body}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

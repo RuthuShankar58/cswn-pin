@@ -1,21 +1,27 @@
 import Link from "next/link";
+import Image from "next/image";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import Gallery from "@/components/Gallery";
 import { STATS } from "@/data/site";
 import { partners } from "@/data/sponsors";
 import { programs, upcomingEvents, categoryLabel } from "@/data/events";
+import { PHOTOS, galleryPhotos } from "@/data/photos";
 
 const pillars = [
   {
     title: "Professional growth",
     body: "Resume and LinkedIn workshops, mock interviews, career-fair prep, and a flagship Women in Tech Panel with industry partners.",
+    photo: PHOTOS.careerTrip,
   },
   {
     title: "Mentorship & speakers",
     body: "Our biweekly Day in the Life series brings women in tech to talk candidly about their roles, paths, and advice.",
+    photo: PHOTOS.talk,
   },
   {
     title: "Community",
     body: "Paint & boba nights, socials with the CS Club, and a Discord where members swap notes, referrals, and encouragement.",
+    photo: PHOTOS.socialFood,
   },
 ];
 
@@ -28,8 +34,8 @@ export default function HomePage() {
       <section className="dotgrid relative overflow-hidden border-b border-border">
         <div className="glow glow-violet -left-32 -top-40 h-[26rem] w-[26rem]" />
         <div className="glow glow-pink right-0 top-10 h-80 w-80 md:right-40" />
-        <div className="container-page py-20 md:py-28">
-          <div className="max-w-3xl">
+        <div className="container-page grid items-center gap-12 py-20 md:py-24 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="max-w-2xl">
             <p className="eyebrow mb-4 rise">Purdue University in Indianapolis</p>
             <h1 className="rise text-4xl font-bold leading-[1.05] md:text-6xl" style={{ animationDelay: "60ms" }}>
               Computer Science
@@ -51,6 +57,29 @@ export default function HomePage() {
               <Link href="/events" className="btn btn-outline">
                 See upcoming events
               </Link>
+            </div>
+          </div>
+
+          {/* Photo cluster */}
+          <div className="rise relative hidden lg:block" style={{ animationDelay: "220ms" }}>
+            <div className="relative aspect-[4/3] rotate-1 overflow-hidden rounded-2xl border border-border shadow-xl">
+              <Image
+                src={PHOTOS.talk.src}
+                alt={PHOTOS.talk.alt}
+                fill
+                sizes="45vw"
+                priority
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute -top-8 -left-8 aspect-square w-40 -rotate-3 overflow-hidden rounded-xl border-4 border-bg shadow-lg">
+              <Image
+                src={PHOTOS.paintGroup.src}
+                alt={PHOTOS.paintGroup.alt}
+                fill
+                sizes="160px"
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
@@ -86,17 +115,25 @@ export default function HomePage() {
             {pillars.map((p, i) => (
               <div
                 key={p.title}
-                className="card card-hover p-6"
+                className="card card-hover overflow-hidden"
                 data-reveal
                 style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
               >
-                <span className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-2 text-base font-bold text-accent-contrast dark:text-[#12101a]">
-                  {i + 1}
-                </span>
-                <h3 className="text-lg font-semibold">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                  {p.body}
-                </p>
+                <div className="relative h-40 border-b border-border bg-bg-subtle">
+                  <Image
+                    src={p.photo.src}
+                    alt={p.photo.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                    {p.body}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -174,6 +211,17 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CSWN in action */}
+      <section className="section border-t border-border">
+        <div className="container-page">
+          <div data-reveal>
+            <p className="eyebrow mb-3">CSWN in action</p>
+            <h2 className="text-2xl font-bold md:text-3xl">A year in photos</h2>
+          </div>
+          <Gallery photos={galleryPhotos} className="mt-10" />
         </div>
       </section>
 

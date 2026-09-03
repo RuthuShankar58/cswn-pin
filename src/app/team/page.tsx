@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import Gallery from "@/components/Gallery";
 import { officers, openRoles } from "@/data/team";
+import { PHOTOS } from "@/data/photos";
+
+const teamGallery = [
+  PHOTOS.paintGroup,
+  PHOTOS.callout,
+  PHOTOS.networking,
+  PHOTOS.webWorkshop,
+  PHOTOS.pieOfficer,
+  PHOTOS.socialFood,
+  PHOTOS.calloutBoard,
+  PHOTOS.fairTable,
+];
 
 export const metadata: Metadata = {
   title: "Team",
@@ -97,8 +110,21 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Open roles */}
+      {/* Life at CSWN */}
       <section className="section border-t border-border bg-bg-subtle">
+        <div className="container-page">
+          <div data-reveal>
+            <p className="eyebrow mb-3">Life at CSWN</p>
+            <h2 className="text-2xl font-bold md:text-3xl">
+              What we get up to
+            </h2>
+          </div>
+          <Gallery photos={teamGallery} className="mt-10" />
+        </div>
+      </section>
+
+      {/* Open roles */}
+      <section className="section border-t border-border">
         <div className="container-page">
           <div data-reveal>
             <p className="eyebrow mb-3">We&apos;re hiring</p>

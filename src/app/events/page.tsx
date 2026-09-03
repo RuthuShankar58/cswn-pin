@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import {
   programs,
@@ -6,11 +7,27 @@ import {
   pastTerms,
   categoryLabel,
 } from "@/data/events";
+import { PHOTOS } from "@/data/photos";
 
 export const metadata: Metadata = {
   title: "Events",
   description:
     "CSWN's recurring programs, this semester's schedule, and highlights from past terms.",
+};
+
+const programPhoto: Record<string, (typeof PHOTOS)[keyof typeof PHOTOS]> = {
+  ditl: PHOTOS.talk,
+  "women-in-tech-panel": PHOTOS.callout,
+  "coffee-chat": PHOTOS.socialFood,
+  "career-workshops": PHOTOS.webWorkshop,
+  "ai-build-challenge": PHOTOS.networking,
+  socials: PHOTOS.paintBoba,
+};
+
+const termPhoto: Record<string, (typeof PHOTOS)[keyof typeof PHOTOS]> = {
+  "Fall 2025": PHOTOS.pieOfficer,
+  "Spring 2025": PHOTOS.paintGroup,
+  "Fall 2024": PHOTOS.fairTable,
 };
 
 export default function EventsPage() {
@@ -68,27 +85,43 @@ export default function EventsPage() {
             </h2>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {programs.map((p, i) => (
-              <div
-                key={p.id}
-                className="card card-hover p-6"
-                data-reveal
-                style={{ "--reveal-delay": `${i * 60}ms` } as React.CSSProperties}
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-lg font-semibold">{p.title}</h3>
-                  <span className="shrink-0 rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-semibold text-accent">
-                    {categoryLabel[p.category]}
-                  </span>
+            {programs.map((p, i) => {
+              const photo = programPhoto[p.id];
+              return (
+                <div
+                  key={p.id}
+                  className="card card-hover overflow-hidden"
+                  data-reveal
+                  style={{ "--reveal-delay": `${i * 60}ms` } as React.CSSProperties}
+                >
+                  {photo && (
+                    <div className="relative h-40 border-b border-border bg-bg-subtle">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <div className="flex items-center justify-between gap-3">
+                      <h3 className="text-lg font-semibold">{p.title}</h3>
+                      <span className="shrink-0 rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-semibold text-accent">
+                        {categoryLabel[p.category]}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                      {p.description}
+                    </p>
+                    <p className="mt-3 text-xs font-medium text-text-muted">
+                      {p.cadence}
+                    </p>
+                  </div>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-text-muted">
-                  {p.description}
-                </p>
-                <p className="mt-3 text-xs font-medium text-text-muted">
-                  {p.cadence}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -100,26 +133,44 @@ export default function EventsPage() {
             <p className="eyebrow mb-3">Previously</p>
             <h2 className="text-2xl font-bold md:text-3xl">Past terms</h2>
           </div>
-          <div className="mt-10 space-y-10">
-            {pastTerms.map((t) => (
-              <div
-                key={t.term}
-                className="grid gap-4 md:grid-cols-[160px_1fr]"
-                data-reveal
-              >
-                <h3 className="text-lg font-bold gradient-text">{t.term}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {t.highlights.map((h) => (
-                    <span
-                      key={h}
-                      className="rounded-full border border-border px-3 py-1 text-sm text-text-muted"
-                    >
-                      {h}
-                    </span>
-                  ))}
+          <div className="mt-10 space-y-8">
+            {pastTerms.map((t) => {
+              const photo = termPhoto[t.term];
+              return (
+                <div
+                  key={t.term}
+                  className="grid gap-5 md:grid-cols-[240px_1fr]"
+                  data-reveal
+                >
+                  {photo && (
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-bg-subtle">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 240px"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="mb-3 text-lg font-bold gradient-text">
+                      {t.term}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {t.highlights.map((h) => (
+                        <span
+                          key={h}
+                          className="rounded-full border border-border px-3 py-1 text-sm text-text-muted"
+                        >
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
