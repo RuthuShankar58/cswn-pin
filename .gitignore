@@ -45,3 +45,6 @@ next-env.d.ts
 
 # local Claude Code session config
 .claude/settings.json
+
+# static export output
+/out/
