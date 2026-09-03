@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     formats: ["image/avif", "image/webp"],
   },
+  experimental: {
+    // Shared login hosts (e.g. data.cs.purdue.edu) cap per-user processes;
+    // a single build worker avoids spawn EAGAIN. Tiny site, so no real cost.
+    cpus: 1,
+    workerThreads: false,
+  },
 };
 
 export default nextConfig;
